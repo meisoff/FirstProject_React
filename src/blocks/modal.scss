@@ -1,0 +1,96 @@
+.modal {
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba($black, .8);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $z-index-modal;
+
+    &.show {
+        display: flex;
+    }
+}
+
+.modal__content {
+    width: 100%;
+    max-width: 500px;
+    padding:  8rem 8rem 2.5rem;
+    position: relative;
+
+    background-color: $primary;
+    border-radius: 5px;
+
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+
+    @include breakpoint($tablet-bp) {
+        padding: 5rem 3rem 3rem 3rem;
+    }
+
+    &--contact {
+        padding-bottom: 8rem;
+    }
+
+    &--story {
+        padding: 0;
+        background: none;
+    }
+
+    &--share {
+        padding-bottom: 5rem;
+    }
+}
+
+.modal__video {
+    display: block;
+    margin: 0 auto;
+
+}
+
+.modal__close {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.5;
+
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+
+    transition: transform .2s linear, opacity .2s linear;
+
+    &:hover {
+        transform: rotate(180deg);
+        opacity: 1;
+    }
+}
+
+.modal__footer {
+    display: flex;
+    justify-content: center;
+
+    color: #b2b2b2;
+    font-size: 1.2rem;
+
+    li {
+        margin: 0 0.5rem;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
