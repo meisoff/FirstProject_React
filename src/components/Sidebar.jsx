@@ -3,6 +3,7 @@ import SidebarHeader from "../images/sidebar__header.jpg";
 import Inst from "../images/inst.svg";
 import Vk from "../images/vk.svg";
 import Pinterest from "../images/pinterest.svg";
+import {NavLink} from "react-router-dom";
 
 const Sidebar = () => {
     return (
@@ -50,7 +51,7 @@ const Sidebar = () => {
             <nav className="nav  nav--mobile">
                 <ul className="nav__list">
                     <li className="nav__item">
-                        <a className="nav__link" href="index.html">Главная</a>
+                        <NavLink to='/' className="nav__link" >Главная</NavLink>
                     </li>
                     <li className="nav__item">
                         <a className="nav__link has-subnav" href="/#">Статьи</a>
@@ -76,7 +77,7 @@ const Sidebar = () => {
                         <a className="nav__link" href="/#">Реклама</a>
                     </li>
                     <li className="nav__item">
-                        <a className="nav__link" href="profile.html">Профиль</a>
+                        <NavLink to='/profile' className="nav__link" >Профиль</NavLink>
                     </li>
                     <li className="nav__item">
                         <a className="nav__link" href="/#">Выйти</a>
@@ -86,7 +87,7 @@ const Sidebar = () => {
         </div>
 
         <div className="sidebar__footer">
-            <a className="btn btn--red" href="works.html">Мои работы</a>
+            <NavLink to='/works' className="btn btn--red" >Мои работы</NavLink>
             <button className="btn btn--blue" type="button" data-modal="contact-modal">Написать мне</button>
         </div>
     </aside>

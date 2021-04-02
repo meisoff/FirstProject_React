@@ -1,6 +1,7 @@
 import React from "react";
 import Post2 from "../images/post-2.jpg";
 import Post3 from "../images/post-3.jpg";
+import {NavLink} from "react-router-dom";
 
 
 const Posts = () => {
@@ -27,14 +28,14 @@ const Posts = () => {
 
             <article className="post">
                 <div className="post__header post__header--preview">
-                    <a href="post.html">
+                    <NavLink to='/posts'>
                         <img className="post__preview" src={Post2}
                              alt="Как писать код быстро и безболезненно?" />
-                    </a>
+                    </NavLink>
                 </div>
                 <div className="post__content">
                     <h2 className="post__title">
-                        <a href="post.html">Как писать код быстро и безболезненно?</a>
+                        <NavLink to='/posts'>Как писать код быстро и безболезненно?</NavLink>
                     </h2>
                     <p className="post__description">
                         Lorem, ipsum dolor sit amet consectetur adipisicing
@@ -54,7 +55,7 @@ const Posts = () => {
                         </li>
                     </ul>
 
-                    <a className="post__read" href="post.html">читать</a>
+                    <NavLink to='/posts' className="post__read">читать</NavLink>
                 </div>
             </article>
 
@@ -68,7 +69,7 @@ const Posts = () => {
                 </div>
                 <div className="post__content">
                     <h2 className="post__title">
-                        <a href="post.html">Купил новый ноутбук за 150 000 руб</a>
+                        <NavLink to='/posts' >Купил новый ноутбук за 150 000 руб</NavLink>
                     </h2>
                 </div>
 
@@ -82,20 +83,20 @@ const Posts = () => {
                         </li>
                     </ul>
 
-                    <a className="post__read" href="post.html">оставить комментарий</a>
+                    <NavLink to='/posts' className="post__read">оставить комментарий</NavLink>
                 </div>
             </article>
 
             <article className="post">
                 <div className="post__header post__header--preview">
-                    <a href="post.html">
+                    <NavLink to='/posts'>
                         <img className="post__preview" src={Post3}
                              alt="Как я сходил на FrontEnd Conf 2021" />
-                    </a>
+                    </NavLink>
                 </div>
                 <div className="post__content">
                     <h2 className="post__title">
-                        <a href="post.html">Как я сходил на FrontEnd Conf 2021</a>
+                        <NavLink to='/posts'>Как я сходил на FrontEnd Conf 2021</NavLink>
                     </h2>
                     <p className="post__description">
                         Lorem, ipsum dolor sit amet consectetur adipisicing
@@ -115,7 +116,7 @@ const Posts = () => {
                         </li>
                     </ul>
 
-                    <a className="post__read" href="post.html">читать</a>
+                    <NavLink to='/posts' className="post__read">читать</NavLink>
                 </div>
             </article>
         </div>

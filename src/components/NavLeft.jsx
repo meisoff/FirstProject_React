@@ -1,11 +1,12 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 const NavLeft = () => {
     return (
     <nav className="nav">
         <ul className="nav__list">
             <li className="nav__item">
-                <a className="nav__link" href="index.html">Главная</a>
+                <NavLink to='/' className="nav__link">Главная</NavLink>
             </li>
             <li className="nav__item">
                 <a className="nav__link has-subnav" href="/#">Статьи</a>
