@@ -3,7 +3,7 @@ import Header from "./components/Header"
 import Sidebar from "./components/Sidebar";
 import HomePage from "./components/HomePage";
 import {BrowserRouter, Route} from "react-router-dom";
-import Works from "./components/Works";
+import Works from "./components/Works/Works";
 import Profile from "./components/Profile";
 import PostTest from "./components/PostTest";
 
