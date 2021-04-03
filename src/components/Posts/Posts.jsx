@@ -1,18 +1,20 @@
-import React from 'react';
-import Post2 from "../images/post-2.jpg";
-import Post3 from "../images/post-3.jpg";
+import React from "react";
+import Post2 from "../../images/post-2.jpg";
+import Post3 from "../../images/post-3.jpg";
 import PostItem from "./PostItem";
 
-const PostCreate = () => {
+
+const Posts = () => {
+
     let posts = [
         {
             link: "/posts/1",
 
-            content: {
+            content:{
                 description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea."
             },
 
-            footer: {
+            footer:{
                 date: "14.02.2021",
                 dateTime: "2021-02-14 12:26"
             }
@@ -35,6 +37,7 @@ const PostCreate = () => {
                 date: "14.02.2021",
                 dateTime: "2021-02-14 12:26"
             }
+
         },
 
         {
@@ -56,19 +59,19 @@ const PostCreate = () => {
         },
 
         {
-            header: {
+            header:{
                 image: Post3,
                 alt: 'Как я сходил на FrontEnd Conf 2021'
             },
 
             link: "/posts/4",
 
-            content: {
+            content:{
                 description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea.",
                 title: "Как я сходил на FrontEnd Conf 2021"
             },
 
-            footer: {
+            footer:{
                 date: "14.02.2021",
                 dateTime: "2021-02-14 12:26"
             }
@@ -76,11 +79,20 @@ const PostCreate = () => {
     ];
 
     let postElements =
-        posts.map(element => <PostItem />);
+        posts.map(element => {
+            if (element.hasOwnProperty('header')) {
+                return <PostItem header={element.header} link={element.link} content={element.content}
+                                 footer={element.footer}/>
+            } else {
+                return <PostItem content={element.content} footer={element.footer}/>
+            }
+        });
 
     return (
-        { postElements }
+        <div>
+            {postElements}
+        </div>
     )
 }
 
-export default PostCreate;
+export default Posts;

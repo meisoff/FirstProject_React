@@ -1,7 +1,7 @@
 import React from 'react';
 import AddPost from "./add-post";
 import Stories from "./Stories";
-import Posts from "./Posts";
+import Posts from "./Posts/Posts";
 import Pagination from "./Pagination";
 
 const HomePage = () => {
