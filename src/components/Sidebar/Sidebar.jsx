@@ -1,8 +1,8 @@
 import React from "react";
-import SidebarHeader from "../images/sidebar__header.jpg";
-import Inst from "../images/inst.svg";
-import Vk from "../images/vk.svg";
-import Pinterest from "../images/pinterest.svg";
+import SidebarHeader from "../../images/sidebar__header.jpg";
+import Inst from "../../images/inst.svg";
+import Vk from "../../images/vk.svg";
+import Pinterest from "../../images/pinterest.svg";
 import {NavLink} from "react-router-dom";
 
 const Sidebar = () => {

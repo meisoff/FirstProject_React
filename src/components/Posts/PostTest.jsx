@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import Share from '../images/share.svg';
-import Image from '../images/image.jpg';
+import Share from '../../images/share.svg';
+import Image from '../../images/image.jpg';
 
 const PostTest = () => {
     return (
