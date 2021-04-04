@@ -1,8 +1,8 @@
 import React from "react";
-import Stories1 from "../images/stories/stories-1.jpg";
-import Stories2 from "../images/stories/stories-2.jpg";
-import Stories3 from "../images/stories/stories-3.jpg";
-import Stories4 from "../images/stories/stories-4.jpg";
+import Stories1 from "../../images/stories/stories-1.jpg";
+import Stories2 from "../../images/stories/stories-2.jpg";
+import Stories3 from "../../images/stories/stories-3.jpg";
+import Stories4 from "../../images/stories/stories-4.jpg";
 
 
 const Stories = () => {
