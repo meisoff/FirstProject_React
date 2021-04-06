@@ -9,7 +9,7 @@ const HomePage = (props) => {
     return (
         <div>
             <Stories/>
-            <AddPost updateNewPostText={props.updateNewPostText} newPostDescription={props.newPostDescription} addPost={props.addPost}/>
+            <AddPost dispatch={props.dispatch} newPostDescription={props.newPostDescription} />
             <Posts posts={props.posts} />
             <Pagination/>
         </div>
