@@ -116,13 +116,13 @@ let store = {
         ],
         newPostDescription: ''
     },
+
     getState() {
         return this._state
     },
-    rerenderPage(observer) {
+    subscribe(observer) {
         this.rerenderEntireTree = observer;
     },
-
     dispatch(action) {
         this._state.worksList = worksListReducer(this._state.worksList, action)
         this._state.newPostDescription = newPostDescriptionReducer(this._state.newPostDescription, action)
@@ -130,7 +130,6 @@ let store = {
 
         this.rerenderEntireTree(this._state);
     }
-
 }
 
 export default store;
