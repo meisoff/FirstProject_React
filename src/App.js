@@ -6,7 +6,6 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Works from "./components/Works/Works";
 import Profile from "./components/Profile/Profile";
 import PostTest from "./components/Posts/PostTest";
-import {addPost} from "./redux/state";
 
 function App(props) {
 
@@ -18,8 +17,8 @@ function App(props) {
 
                 <main className="main">
                     <div className="container">
-                        <Route path='/#' render={ () => <HomePage updateNewPostText={props.updateNewPostText} newPostDescription={props.appState.newPostDescription} posts={props.appState.posts} addPost={addPost} /> } />
-                        <Route path='//' render={ () => <HomePage updateNewPostText={props.updateNewPostText} newPostDescription={props.appState.newPostDescription} posts={props.appState.posts} addPost={addPost} /> } />
+                        <Route path='/#' render={ () => <HomePage dispatch={props.dispatch} newPostDescription={props.appState.newPostDescription} posts={props.appState.posts} /> } />
+                        <Route path='//' render={ () => <HomePage dispatch={props.dispatch} newPostDescription={props.appState.newPostDescription} posts={props.appState.posts} /> } />
                         <Route path='/works' render={ () => <Works works={props.appState.worksList} /> } />
                         <Route path='/profile' component={Profile} />
                         <Route path='/posts' component={PostTest} />
