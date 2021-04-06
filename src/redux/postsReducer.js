@@ -1,6 +1,6 @@
-import store from "./store";
 import Post2 from "../images/post-2.jpg";
 import Post3 from "../images/post-3.jpg";
+import store from "./redux-store";
 const ADD_POST = 'ADD-POST';
 
 let initialState = [
@@ -87,7 +87,6 @@ const postsReducer = (state = initialState, action) => {
                     return date;
                 }
             }
-
             let newPost = {
                 link: "/posts/12",
 
@@ -110,6 +109,10 @@ const postsReducer = (state = initialState, action) => {
 
 export const addPostCreate = () => {
     return { type: ADD_POST, description: store.getState().newPostDescription }
+}
+
+export const clearPost = () => {
+    store.getState().newPostDescription = '';
 }
 
 export default postsReducer;

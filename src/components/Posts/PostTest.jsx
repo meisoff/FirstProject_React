@@ -63,14 +63,6 @@ const PostTest = () => {
                         <li>item</li>
                         <li>item</li>
                     </ol>
-
-                    <table>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                        </tr>
-                    </table>
                 </div>
 
                 <div className="related">
