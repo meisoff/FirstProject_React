@@ -6,6 +6,7 @@ const newPostDescriptionReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_NEW_POST_TEXT:
             state = action.postMessage;
+            debugger
             return state;
         default:
             return state;

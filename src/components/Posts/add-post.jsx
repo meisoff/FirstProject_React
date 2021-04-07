@@ -1,21 +1,17 @@
 import React from "react";
-import {addPostCreate} from "../../redux/postsReducer";
-import {updateNewPostText} from "../../redux/newPostDescriptionReducer";
 
 const AddPost = (props) => {
 
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        props.dispatch(addPostCreate());
+        props.onAddPost();
     }
 
     let newPostChange = () => {
         let text = newPostElement.current.value;
-
-        props.dispatch(updateNewPostText(text));
+        props.onChangePost(text)
     }
-
     return (
         <div className="add-post">
             <div className="add-post__form">
