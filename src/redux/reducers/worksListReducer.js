@@ -1,5 +1,5 @@
-import Post1nd from "../images/works/1nd_page.jpg";
-import Post2nd from "../images/works/2nd_page.jpg";
+import Post1nd from "../../images/works/1nd_page.jpg";
+import Post2nd from "../../images/works/2nd_page.jpg";
 
 const WORKS_LIST = 'WORKS-LIST';
 
@@ -39,6 +39,7 @@ let initialState = [
 ];
 
 const worksListReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case WORKS_LIST:
             return state;

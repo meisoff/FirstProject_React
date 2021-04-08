@@ -1,6 +1,7 @@
-import Post2 from "../images/post-2.jpg";
-import Post3 from "../images/post-3.jpg";
-import store from "./redux-store";
+import Post2 from "../../images/post-2.jpg";
+import Post3 from "../../images/post-3.jpg";
+import store from "../redux-store";
+
 const ADD_POST = 'ADD-POST';
 
 let initialState = [
@@ -76,6 +77,7 @@ let initialState = [
 ];
 
 const postsReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case ADD_POST:
             let fullDate = new Date();
@@ -100,19 +102,15 @@ const postsReducer = (state = initialState, action) => {
                 }
             }
 
-            state.unshift(newPost);
-            return state;
+            return [newPost, ...state];
+
         default:
             return state;
     }
 }
 
 export const addPostCreate = () => {
-    return { type: ADD_POST, description: store.getState().newPostDescription }
-}
-
-export const clearPost = () => {
-    store.getState().newPostDescription = '';
+    return {type: ADD_POST, description: store.getState().newPostDescription}
 }
 
 export default postsReducer;

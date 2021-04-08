@@ -1,13 +1,15 @@
+const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 let initialState = '';
 
 const newPostDescriptionReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case UPDATE_NEW_POST_TEXT:
-            state = action.postMessage;
-            debugger
-            return state;
+            return action.postMessage;
+        case ADD_POST:
+            return '';
         default:
             return state;
     }

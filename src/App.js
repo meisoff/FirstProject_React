@@ -3,11 +3,12 @@ import Header from "./components/Header/Header"
 import Sidebar from "./components/Sidebar/Sidebar";
 import HomePage from "./components/Homepage/HomePage";
 import {BrowserRouter, Route} from "react-router-dom";
-import Works from "./components/Works/Works";
 import Profile from "./components/Profile/Profile";
 import PostTest from "./components/Posts/PostTest";
+import WorksContainer from "./components/Works/WorksContainer";
+import Article from "./components/Article/Article";
 
-function App(props) {
+function App() {
 
     return (
         <BrowserRouter>
@@ -17,11 +18,12 @@ function App(props) {
 
                 <main className="main">
                     <div className="container">
-                        <Route path='/#' render={ () => <HomePage dispatch={props.dispatch} newPostDescription={props.appState.newPostDescription} posts={props.appState.posts} /> } />
-                        <Route path='//' render={ () => <HomePage dispatch={props.dispatch} newPostDescription={props.appState.newPostDescription} posts={props.appState.posts} /> } />
-                        <Route path='/works' render={ () => <Works works={props.appState.worksList} /> } />
+                        <Route path='/#' render={ () => <HomePage /> } />
+                        <Route path='//' render={ () => <HomePage /> } />
+                        <Route path='/works' render={ () => <WorksContainer /> } />
                         <Route path='/profile' component={Profile} />
                         <Route path='/posts' component={PostTest} />
+                        <Route exact path='/article' component={Article} />
                     </div>
                 </main>
             </div>

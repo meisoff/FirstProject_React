@@ -1,7 +1,7 @@
 import {combineReducers, createStore} from "redux";
-import worksListReducer from "./worksListReducer";
-import postsReducer from "./postsReducer";
-import newPostDescriptionReducer from "./newPostDescriptionReducer";
+import worksListReducer from "./reducers/worksListReducer";
+import postsReducer from "./reducers/postsReducer";
+import newPostDescriptionReducer from "./reducers/newPostDescriptionReducer";
 
 let reducers = combineReducers({
     posts: postsReducer,
