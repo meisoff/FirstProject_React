@@ -1,8 +1,8 @@
 import React from 'react';
 import Stories from "../Stories/Stories";
-import Pagination from "../Pagination/Pagination";
 import AddPostContainer from "../Posts/AddPostContainer";
 import PostsContainer from "../Posts/PostsContainer";
+import PaginationContainer from "../Pagination/PaginationContainer";
 
 
 const HomePage = () => {
@@ -12,7 +12,7 @@ const HomePage = () => {
             <Stories/>
             <AddPostContainer />
             <PostsContainer />
-            <Pagination/>
+            <PaginationContainer />
         </div>
     )
 }

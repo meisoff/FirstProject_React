@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Article extends React.Component {
+class CreateArticle extends React.Component {
     render() {
         return (
             <div>
@@ -11,4 +11,4 @@ class Article extends React.Component {
     }
 }
 
-export default Article
+export default CreateArticle;

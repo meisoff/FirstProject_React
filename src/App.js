@@ -6,7 +6,8 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Profile from "./components/Profile/Profile";
 import PostTest from "./components/Posts/PostTest";
 import WorksContainer from "./components/Works/WorksContainer";
-import Article from "./components/Article/Article";
+import CreateArticleContainer from "./components/Article/CreateArticleContainer";
+import ArticleContainer from "./components/Article/ArticleContainer";
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
                         <Route path='/works' render={ () => <WorksContainer /> } />
                         <Route path='/profile' component={Profile} />
                         <Route path='/posts' component={PostTest} />
-                        <Route exact path='/article' component={Article} />
+                        <Route exact path='/article' component={ArticleContainer} />
+                        <Route exact path='/create_article' component={CreateArticleContainer} />
                     </div>
                 </main>
             </div>
