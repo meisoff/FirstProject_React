@@ -1,0 +1,35 @@
+.createArticle__editor {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  min-height: 20rem;
+  padding: 1.5rem 2rem;
+
+  background-color: $secondary;
+  box-shadow: 0 2px 10px rgba($black, .15);
+  border-radius: 5px;
+
+  @include breakpoint($mobile-bp) {
+    padding: 1.5rem;
+  }
+}
+
+.createArticle__toolbar {
+  margin-top: 2rem;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba($black, .15);
+
+}
+
+.createArticle__title, .createArticle__description {
+  padding: 1.25rem 2rem;
+  margin-bottom: 1rem;
+
+  background-color: $secondary;
+  box-shadow: 0 2px 10px rgba($black, .15);
+  border-radius: 5px;
+
+  @include breakpoint($mobile-bp) {
+    padding: 1.25rem;
+  }
+}

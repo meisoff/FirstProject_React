@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import Share from '../../images/share.svg';
 import Image from '../../images/image.jpg';
 
-const PostTest = () => {
+const PostTest2 = () => {
     return (
         <article className="post">
             <div className="post__actions">
@@ -147,4 +147,4 @@ const PostTest = () => {
     )
 }
 
-export default PostTest;
+export default PostTest2;

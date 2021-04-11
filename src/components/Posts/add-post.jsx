@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 const AddPost = (props) => {
 
@@ -15,11 +16,13 @@ const AddPost = (props) => {
     return (
         <div className="add-post">
             <div className="add-post__form">
-                <textarea onChange={newPostChange} ref={newPostElement} value={props.newPostDescription} className="add-post__textarea" name="post-text" placeholder="Напишите что-нибудь" data-autoresize></textarea>
+                <textarea onChange={newPostChange} ref={newPostElement} value={props.newPostDescription}
+                          className="add-post__textarea" name="post-text" placeholder="Напишите что-нибудь"
+                          data-autoresize></textarea>
                 <div className="add-post__form-actions">
-                    <label className="add-post-file" htmlFor="add-post-file">
-                        <input type="file" id="add-post-file" />
-                    </label>
+                    <NavLink to="/create_article">
+                        <div className="add-post-file"></div>
+                    </NavLink>
                     <button onClick={addPost} className="add-post__send">
                         Отправить
                     </button>
