@@ -1,5 +1,7 @@
 import React from 'react';
 import store from "../redux-store";
+import { EditorState } from 'draft-js';
+
 const UPDATE_ARTICLE_TEXT = 'UPDATE_ARTICLE_TEXT';
 const UPDATE_ARTICLE_TITLE = 'UPDATE_ARTICLE_TITLE';
 const UPDATE_ARTICLE_DESCRIPTION = 'UPDATE_ARTICLE_DESCRIPTION';
@@ -9,12 +11,13 @@ let initialState = {
     image: '',
     title: '',
     description: '',
-    text: ''
+    text: EditorState.createEmpty()
 }
 
 const createArticleReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_ARTICLE_TEXT:
+            console.log('redux action: ', action.type, action.text.getCurrentContent().getPlainText());
             return {...state, text: action.text}
         case UPDATE_ARTICLE_TITLE:
             return {...state, title: action.text}
