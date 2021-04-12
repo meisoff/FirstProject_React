@@ -8,7 +8,7 @@ const Posts = (props) => {
         props.posts.map(element => {
             if (element.hasOwnProperty('header')) {
                 return <PostItem header={element.header} link={element.link} content={element.content}
-                                 footer={element.footer}/>
+                                 footer={element.footer} category={element.category}/>
             } else {
                 return <PostItem content={element.content} footer={element.footer}/>
             }

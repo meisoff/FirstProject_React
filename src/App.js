@@ -7,7 +7,7 @@ import Profile from "./components/Profile/Profile";
 import WorksContainer from "./components/Works/WorksContainer";
 import CreateArticleContainer from "./components/Article/CreateArticleContainer";
 import ArticleContainer from "./components/Article/ArticleContainer";
-import PostTest2 from "./components/Posts/PostTest2";
+import React from "react";
 
 function App() {
 
@@ -23,8 +23,7 @@ function App() {
                         <Route path='//' render={ () => <HomePage /> } />
                         <Route path='/works' render={ () => <WorksContainer /> } />
                         <Route path='/profile' component={Profile} />
-                        <Route exact path='/posts' render={ () => <PostTest2 /> } />
-                        <Route exact path='/article' render={ () => <ArticleContainer /> } />
+                        <Route path='/posts' render={ () => <ArticleContainer /> } />
                         <Route exact path='/create_article' render={ () => <CreateArticleContainer /> } />
                     </div>
                 </main>

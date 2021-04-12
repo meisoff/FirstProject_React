@@ -2,14 +2,15 @@ import React from 'react';
 import {connect} from "react-redux";
 import CreateArticle from "./CreateArticle";
 import {
-    onAddArticle,
+    onAddArticle, onClickButton,
     onDescriptionStateChange,
     onEditorStateChange,
-    onTitleStateChange
+    onTitleStateChange, uploadFile
 } from "../../redux/reducers/createArticleReducer";
 
 const mapStateToProps = (state) => {
     return {
+        categoryState: state.createArticle.category,
         newEditorState: state.createArticle.text,
         newTitleState: state.createArticle.title,
         newDescriptionState: state.createArticle.description
@@ -29,6 +30,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         onAddArticle: () => {
             dispatch(onAddArticle())
+        },
+        onClickButton: (id) => {
+            dispatch(onClickButton(id))
+        },
+        uploadFile: (URL) => {
+            dispatch(uploadFile(URL))
         }
     }
 }
