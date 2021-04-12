@@ -4,7 +4,7 @@ import Article from "./Article";
 
 const mapStateToProps = (state) => {
     return {
-
+        posts: state.posts
     }
 }
 

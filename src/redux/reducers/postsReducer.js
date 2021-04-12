@@ -1,15 +1,19 @@
 import Post2 from "../../images/post-2.jpg";
 import Post3 from "../../images/post-3.jpg";
 import store from "../redux-store";
+import PostTest from "../../components/Posts/PostTest";
 
 const ADD_POST = 'ADD-POST';
+const ADD_ARTICLE = 'ADD_ARTICLE';
 
 let initialState = [
     {
         link: "/posts/1",
 
         content: {
-            description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea."
+            description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea.",
+            html: {PostTest}
+
         },
 
         footer: {
@@ -28,7 +32,8 @@ let initialState = [
 
         content: {
             description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea.",
-            title: "Как писать код быстро и безболезненно?"
+            title: "Как писать код быстро и безболезненно?",
+            html: {PostTest}
         },
 
         footer: {
@@ -47,7 +52,8 @@ let initialState = [
 
         content: {
             description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea.",
-            title: "Купил новый ноутбук за 150 000 руб"
+            title: "Купил новый ноутбук за 150 000 руб",
+            html: {PostTest}
         },
 
         footer: {
@@ -66,7 +72,8 @@ let initialState = [
 
         content: {
             description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea.",
-            title: "Как я сходил на FrontEnd Conf 2021"
+            title: "Как я сходил на FrontEnd Conf 2021",
+            html: {PostTest}
         },
 
         footer: {
@@ -78,32 +85,48 @@ let initialState = [
 
 const postsReducer = (state = initialState, action) => {
 
+    let fullDate = new Date();
+    let date = (date) => {
+        if (date < 10) {
+            return '0' + date;
+        } else {
+            return date;
+        }
+    }
+    let footer = () => {
+        return {
+            date: date(fullDate.getDate()) + '.' + date(fullDate.getMonth()) + '.' + fullDate.getFullYear(),
+            dateTime: date(fullDate.getDate()) + '-' + date(fullDate.getMonth()) + '-' + fullDate.getFullYear() + ' ' + fullDate.getHours() + ':' + fullDate.getMinutes()
+        }
+
+    }
+
     switch (action.type) {
         case ADD_POST:
-            let fullDate = new Date();
-
-            let date = function (date) {
-                if (date < 10) {
-                    return '0' + date;
-                } else {
-                    return date;
-                }
-            }
-            let newPost = {
-                link: "/posts/12",
-
+            return [{
                 content: {
                     description: action.description,
                 },
 
-                footer: {
-                    date: date(fullDate.getDate()) + '.' + date(fullDate.getMonth()) + '.' + fullDate.getFullYear(),
-                    dateTime: date(fullDate.getDate()) + '-' + date(fullDate.getMonth()) + '-' + fullDate.getFullYear() + ' ' + fullDate.getHours() + ':' + fullDate.getMinutes()
-                }
-            }
+                footer: footer()
+            }, ...state]
+        case ADD_ARTICLE:
+            return [
+                {
+                    header: {
+                        image: Post2,
+                        alt: action.createArticle.title
+                    },
 
-            return [newPost, ...state];
+                    link: `/posts/${state.length + 1}`,
 
+                    content: {
+                        description: action.createArticle.description,
+                        title: action.createArticle.title,
+                    },
+
+                    footer: footer()
+                }, ...state]
         default:
             return state;
     }

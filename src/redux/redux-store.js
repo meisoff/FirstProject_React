@@ -3,12 +3,14 @@ import worksListReducer from "./reducers/worksListReducer";
 import postsReducer from "./reducers/postsReducer";
 import newPostDescriptionReducer from "./reducers/newPostDescriptionReducer";
 import paginationListReducer from "./reducers/paginationListReducer";
+import createArticleReducer from "./reducers/createArticleReducer";
 
 let reducers = combineReducers({
     posts: postsReducer,
     worksList: worksListReducer,
     newPostDescription: newPostDescriptionReducer,
-    paginationList: paginationListReducer
+    paginationList: paginationListReducer,
+    createArticle: createArticleReducer
 })
 
 let store = createStore(reducers);

@@ -15,7 +15,7 @@ const PostItem = (props) => {
                     </div>
                     <div className="post__content">
                         <h2 className="post__title">
-                            <NavLink to={`${props.link}`}>{props.content.title}</NavLink>
+                            <NavLink to={props.link}>{props.content.title}</NavLink>
                         </h2>
                         <p className="post__description">
                             {props.content.description}

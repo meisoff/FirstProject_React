@@ -66,10 +66,7 @@
 }
 
 .add-post-file {
-    background: #ebebeb url("../images/add-photo.svg") center no-repeat;
-    input {
-        display: none;
-    }
+    background: #ebebeb url("../images/article.png") center no-repeat;
 
     &:hover {
         background-color: darken(#ebebeb, 5%);

@@ -12,7 +12,7 @@ let mapStateToProps = (state) => {
 }
 
 
-let mapDispatchToProps = (dispatch, state) => {
+let mapDispatchToProps = (dispatch) => {
     return {
         updatePaginationList: (value) => {
             dispatch(updatePaginationList(value))
