@@ -9,7 +9,12 @@ class CreateArticle extends Component {
         super(props);
         this.titleElement = createRef();
         this.descriptionElement = createRef();
-        this.textElement = createRef();
+
+        this.id = {
+            site: 'site',
+            marketing: 'marketing',
+            video: 'video'
+        }
     }
 
     onTitleStateChange = () => {
@@ -24,6 +29,47 @@ class CreateArticle extends Component {
 
     onAddArticle = () => {
         this.props.onAddArticle();
+    }
+
+    cleverTags = () => {
+        let siteRef = createRef();
+        let marketingRef = createRef();
+        let videoRef = createRef();
+
+        switch (this.props.categoryState) {
+            case this.id.site:
+                return (
+                    <div className="createArticle__category-tagsParent">
+                        <div className="tags--active" onClick={() => this.props.onClickButton(this.id.site)}>Создание сайта</div>
+                        <div className="createArticle__category-tags" onClick={() => this.props.onClickButton(this.id.marketing)}>Интернет-маркетинг</div>
+                        <div className="createArticle__category-tags" onClick={() => this.props.onClickButton(this.id.video)}>Продвижение видео</div>
+                    </div>
+                )
+            case this.id.marketing:
+                return (
+                    <div className="createArticle__category-tagsParent">
+                        <div className="createArticle__category-tags" onClick={() => this.props.onClickButton(this.id.site)}>Создание сайта</div>
+                        <div className="tags--active" onClick={() => this.props.onClickButton(this.id.marketing)}>Интернет-маркетинг</div>
+                        <div className="createArticle__category-tags" onClick={() => this.props.onClickButton(this.id.video)}>Продвижение видео</div>
+                    </div>
+                )
+            case this.id.video:
+                return (
+                    <div className="createArticle__category-tagsParent">
+                        <div className="createArticle__category-tags" onClick={() => this.props.onClickButton(this.id.site)}>Создание сайта</div>
+                        <div className="createArticle__category-tags" onClick={() => this.props.onClickButton(this.id.marketing)}>Интернет-маркетинг</div>
+                        <div className="tags--active" onClick={() => this.props.onClickButton(this.id.video)}>Продвижение видео</div>
+                    </div>
+                )
+            default:
+                return (
+                    <div className="createArticle__category-tagsParent">
+                        <div className="createArticle__category-tags" onClick={() => this.props.onClickButton(this.id.site)}>Создание сайта</div>
+                        <div className="createArticle__category-tags" onClick={() => this.props.onClickButton(this.id.marketing)}>Интернет-маркетинг</div>
+                        <div className="createArticle__category-tags" onClick={() => this.props.onClickButton(this.id.video)}>Продвижение видео</div>
+                    </div>
+                )
+        }
     }
 
     render() {
@@ -48,6 +94,16 @@ class CreateArticle extends Component {
                     </div>
                 </div>
 
+                <div className="createArticle__category">
+                    <div className="createArticle__category-title">Выберите категорию</div>
+                    {this.cleverTags()}
+                </div>
+
+                <div className="createArticle__category">
+                    <div className="createArticle__category-title">Выберите фотографию на заставку</div>
+                    <div className="createArticle__category-tags" onClick={() => this.props.uploadFile()}>Загрузить</div>
+                </div>
+
                 <Editor
                     editorState={this.props.newEditorState}
                     editorClassName="createArticle__editor"
@@ -59,6 +115,7 @@ class CreateArticle extends Component {
                 <button onClick={this.onAddArticle}
                         className="btn btn--small btn--blue btn--rounded btn-pos--right">Опубликовать
                 </button>
+
             </div>
         )
     }

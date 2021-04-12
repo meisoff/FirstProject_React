@@ -6,14 +6,16 @@ import PostTest from "../../components/Posts/PostTest";
 const ADD_POST = 'ADD-POST';
 const ADD_ARTICLE = 'ADD_ARTICLE';
 
+let category = {
+    site: 'Создание сайтов',
+    marketing: 'Интернет-маркетинг',
+    video: 'Продвижение видео',
+}
+
 let initialState = [
     {
-        link: "/posts/1",
-
         content: {
             description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea.",
-            html: {PostTest}
-
         },
 
         footer: {
@@ -33,13 +35,15 @@ let initialState = [
         content: {
             description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea.",
             title: "Как писать код быстро и безболезненно?",
-            html: {PostTest}
+            testPage: PostTest()
         },
 
         footer: {
             date: "14.02.2021",
             dateTime: "2021-02-14 12:26"
-        }
+        },
+
+        category: category.site,
 
     },
 
@@ -53,13 +57,15 @@ let initialState = [
         content: {
             description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea.",
             title: "Купил новый ноутбук за 150 000 руб",
-            html: {PostTest}
+            testPage: PostTest()
         },
 
         footer: {
             date: "14.02.2021",
             dateTime: "2021-02-14 12:26"
-        }
+        },
+
+        category: category.video,
     },
 
     {
@@ -73,13 +79,15 @@ let initialState = [
         content: {
             description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi tempora totam dolor distinctio nihil sed itaque illum amet commodi quasi cumque facilis nesciunt iusto, excepturi mollitia molestias voluptatibus recusandae ea.",
             title: "Как я сходил на FrontEnd Conf 2021",
-            html: {PostTest}
+            testPage: PostTest()
         },
 
         footer: {
             date: "14.02.2021",
             dateTime: "2021-02-14 12:26"
-        }
+        },
+
+        category: category.marketing,
     }
 ];
 
@@ -123,6 +131,7 @@ const postsReducer = (state = initialState, action) => {
                     content: {
                         description: action.createArticle.description,
                         title: action.createArticle.title,
+                        html: action.createArticle.html
                     },
 
                     footer: footer()

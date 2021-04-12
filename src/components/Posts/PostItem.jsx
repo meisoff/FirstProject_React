@@ -28,7 +28,7 @@ const PostItem = (props) => {
                                 <time dateTime={props.footer.dateTime}>{props.footer.date}</time>
                             </li>
                             <li className="post__data-item">
-                                <a href="/#">cоздание сайтов</a>
+                                <NavLink to="/#">{props.category}</NavLink>
                             </li>
                         </ul>
 
@@ -61,7 +61,7 @@ const PostItem = (props) => {
                                 <time dateTime={props.footer.dateTime}>{props.footer.date}</time>
                             </li>
                             <li className="post__data-item">
-                                <a href="/#">cоздание сайтов</a>
+                                <NavLink to="/#">{props.category}</NavLink>
                             </li>
                         </ul>
 
