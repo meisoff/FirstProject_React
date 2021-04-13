@@ -2,44 +2,26 @@ import React from 'react';
 import {connect} from "react-redux";
 import CreateArticle from "./CreateArticle";
 import {
-    onAddArticle, onClickButton,
+    closeWindowUrl,
+    onAddArticle, onAddWindowUrl, onClickButton,
     onDescriptionStateChange,
-    onEditorStateChange,
-    onTitleStateChange, uploadFile
+    onEditorStateChanged,
+    onTitleStateChange, updateUrlState, uploadFile
 } from "../../redux/reducers/createArticleReducer";
+import {updateTotalPostCount} from "../../redux/reducers/paginationListReducer";
 
 const mapStateToProps = (state) => {
     return {
         categoryState: state.createArticle.category,
         newEditorState: state.createArticle.text,
         newTitleState: state.createArticle.title,
-        newDescriptionState: state.createArticle.description
+        newDescriptionState: state.createArticle.description,
+        newInputUrlState: state.createArticle.image,
+        isInputUrlOpen: state.createArticle.isInputUrlOpen,
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onEditorStateChanged: (text) => {
-            dispatch(onEditorStateChange(text));
-        },
-        onTitleStateChange: (text) => {
-            dispatch(onTitleStateChange(text));
-        },
-        onDescriptionStateChange: (text) => {
-            dispatch(onDescriptionStateChange(text));
-        },
-        onAddArticle: () => {
-            dispatch(onAddArticle())
-        },
-        onClickButton: (id) => {
-            dispatch(onClickButton(id))
-        },
-        uploadFile: (URL) => {
-            dispatch(uploadFile(URL))
-        }
-    }
-}
-
-const CreateArticleContainer = connect(mapStateToProps, mapDispatchToProps)(CreateArticle);
+const CreateArticleContainer = connect(mapStateToProps, {onEditorStateChanged, onTitleStateChange, onDescriptionStateChange, onAddArticle, onClickButton, uploadFile, onAddWindowUrl, closeWindowUrl, updateUrlState, updateTotalPostCount
+})(CreateArticle);
 
 export default CreateArticleContainer;

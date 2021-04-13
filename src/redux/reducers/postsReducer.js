@@ -2,6 +2,7 @@ import Post2 from "../../images/post-2.jpg";
 import Post3 from "../../images/post-3.jpg";
 import store from "../redux-store";
 import PostTest from "../../components/Posts/PostTest";
+import {updateTotalPostCount} from "./paginationListReducer";
 
 const ADD_POST = 'ADD-POST';
 const ADD_ARTICLE = 'ADD_ARTICLE';
@@ -122,7 +123,7 @@ const postsReducer = (state = initialState, action) => {
             return [
                 {
                     header: {
-                        image: Post2,
+                        image: action.createArticle.image,
                         alt: action.createArticle.title
                     },
 
@@ -134,7 +135,9 @@ const postsReducer = (state = initialState, action) => {
                         html: action.createArticle.html
                     },
 
-                    footer: footer()
+                    footer: footer(),
+
+                    category: action.createArticle.category
                 }, ...state]
         default:
             return state;
