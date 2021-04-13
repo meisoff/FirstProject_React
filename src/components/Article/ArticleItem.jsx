@@ -7,7 +7,8 @@ const ArticleItem = (props) => {
         return (
             props.element.content.testPage
         )
-    } else {
+    }
+    else if (props.element.content.hasOwnProperty('html')) {
         return (
             <article className="post">
                 <div className="post__actions">

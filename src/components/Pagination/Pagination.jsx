@@ -6,12 +6,12 @@ class Pagination extends React.Component {
             (this.props.updatePaginationList(value + 1))
         }
     }
-
     lastPaginationList = (value) => {
         if (value > 1) {
             this.props.updatePaginationList(value - 1)
         }
     }
+
 
     render() {
         let totalPages =

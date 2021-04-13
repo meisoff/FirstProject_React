@@ -11,15 +11,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-
-let mapDispatchToProps = (dispatch) => {
-    return {
-        updatePaginationList: (value) => {
-            dispatch(updatePaginationList(value))
-        }
-    }
-}
-
-const PaginationContainer = connect(mapStateToProps, mapDispatchToProps)(Pagination)
+const PaginationContainer = connect(mapStateToProps, {updatePaginationList})(Pagination)
 
 export default PaginationContainer;

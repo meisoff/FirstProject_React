@@ -9,8 +9,7 @@ const PostItem = (props) => {
                 <article className="post">
                     <div className="post__header post__header--preview">
                         <NavLink to={props.link}>
-                            <img className="post__preview" src={props.header.image}
-                                 alt={props.header.alt}/>
+                            <div className="post__preview" alt={props.header.alt} style={{backgroundImage: `url(${props.header.image})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}} />
                         </NavLink>
                     </div>
                     <div className="post__content">

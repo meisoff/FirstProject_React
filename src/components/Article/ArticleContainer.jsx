@@ -8,12 +8,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
-}
-
-const ArticleContainer = connect(mapStateToProps, mapDispatchToProps)(Article);
+const ArticleContainer = connect(mapStateToProps)(Article);
 
 export default ArticleContainer;

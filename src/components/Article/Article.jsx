@@ -3,12 +3,20 @@ import ArticleItem from "./ArticleItem";
 import { Route } from "react-router-dom";
 
 const Article = (props) => {
-
+    
+    let filteredArticle =
+        props.posts.filter(element => {
+            if (element.hasOwnProperty('link')) {
+                return element;
+            }
+        })
+    
     let articleElement =
-        props.posts.map(element => {
-            return (
-                <Route exact path={element.link} render={() => <ArticleItem element={element}/>}/>
-            )
+        filteredArticle.map(element => {
+                return (
+                    <Route exact path={element.link} render={() => <ArticleItem element={element}/>}/>
+                )
+            
         })
 
     return (

@@ -6,12 +6,13 @@ const AddPost = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        props.onAddPost();
+        props.addPostCreate();
+        props.updateTotalPostCount();
     }
 
     let newPostChange = () => {
         let text = newPostElement.current.value;
-        props.onChangePost(text)
+        props.updateNewPostText(text)
     }
     return (
         <div className="add-post">
