@@ -1,6 +1,6 @@
 import React, {Component, createRef} from 'react';
 import 'draft-js';
-import {Editor} from "react-draft-wysiwyg";
+import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import InputUrlWindow from "../common/InputUrlWindow/InputUrlWindow";
 
@@ -131,15 +131,14 @@ class CreateArticle extends Component {
                     <div className="createArticle__form">
                         <textarea value={this.props.newTitleState} ref={this.titleElement}
                                   onChange={this.onTitleStateChange} className="createArticle__textarea"
-                                  placeholder="Заголовок" maxLength="50" data-autoresize></textarea>
+                                  placeholder="Заголовок" maxLength="50" />
                     </div>
                 </div>
                 <div className="createArticle__description">
                     <div className="createArticle__form">
                         <textarea value={this.props.newDescriptionState} ref={this.descriptionElement}
                                   onChange={this.onDescriptionStateChange} className="createArticle__textarea"
-                                  placeholder="Краткое описание" maxLength="200"
-                                  data-autoresize></textarea>
+                                  placeholder="Краткое описание" maxLength="200" />
                     </div>
                 </div>
                 <div className="createArticle__category">

@@ -2,10 +2,10 @@ import Post2 from "../../images/post-2.jpg";
 import Post3 from "../../images/post-3.jpg";
 import store from "../redux-store";
 import PostTest from "../../components/Posts/PostTest";
-import {updateTotalPostCount} from "./paginationListReducer";
 
 const ADD_POST = 'ADD-POST';
 const ADD_ARTICLE = 'ADD_ARTICLE';
+const SEPARATE = 'SEPARATE';
 
 let category = {
     site: 'Создание сайтов',
@@ -22,7 +22,9 @@ let initialState = [
         footer: {
             date: "14.02.2021",
             dateTime: "2021-02-14 12:26"
-        }
+        },
+
+        key: 4,
     },
 
     {
@@ -45,7 +47,7 @@ let initialState = [
         },
 
         category: category.site,
-
+        key: 3,
     },
 
     {
@@ -67,6 +69,7 @@ let initialState = [
         },
 
         category: category.video,
+        key: 2,
     },
 
     {
@@ -89,6 +92,7 @@ let initialState = [
         },
 
         category: category.marketing,
+        key: 1,
     }
 ];
 
@@ -129,6 +133,8 @@ const postsReducer = (state = initialState, action) => {
 
                     link: `/posts/${state.length + 1}`,
 
+                    key: state.length + 1,
+
                     content: {
                         description: action.createArticle.description,
                         title: action.createArticle.title,
@@ -139,6 +145,8 @@ const postsReducer = (state = initialState, action) => {
 
                     category: action.createArticle.category
                 }, ...state]
+        case SEPARATE:
+            return { ...action.array}
         default:
             return state;
     }
@@ -146,6 +154,29 @@ const postsReducer = (state = initialState, action) => {
 
 export const addPostCreate = () => {
     return {type: ADD_POST, description: store.getState().newPostDescription}
+}
+
+export const separateFunc = (array) => {
+    let result = [];
+
+    let collected = [];
+    array.forEach(item => {
+        collected.push(item);
+        if (collected.length === store.getState().paginationList.pageSize) {
+            result.push(collected);
+            collected = [];
+        }
+    });
+
+    if (collected.length > 0) {
+        result.push(collected);
+    }
+
+    return result;
+}
+
+export const separate = (array) => {
+    return {type: SEPARATE, array}
 }
 
 export default postsReducer;

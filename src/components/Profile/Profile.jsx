@@ -11,23 +11,23 @@ const Profile = () => {
                         <div className="form__group form__group--md">
                             <input type="text" className="form__control" placeholder="Ваше имя"
                                    value="Александр Калыргин"/>
-                            <span className="form__line"></span>
+                            <span className="form__line" />
                         </div>
 
                         <div className="form__group form__group--md">
                             <input type="email" className="form__control" placeholder="Ваш e-mail"
                                    value="kalyrginwot@mail.ru"/>
-                            <span className="form__line"></span>
+                            <span className="form__line" />
                         </div>
 
                         <div className="form__group form__group--md">
                             <input type="password" className="form__control" placeholder="Новый пароль"/>
-                            <span className="form__line"></span>
+                            <span className="form__line" />
                         </div>
 
                         <div className="form__group form__group--md">
                             <input type="password" className="form__control" placeholder="Повторите пароль"/>
-                            <span className="form__line"></span>
+                            <span className="form__line" />
                         </div>
                     </div>
                     <div className="cabinet__avatar">

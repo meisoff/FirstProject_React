@@ -1,0 +1,152 @@
+.wrapper_disable {
+    display: none;
+}
+.wrapper_active {
+    display: block
+}
+/*! CSS Used from: Embedded */
+div,
+span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+:focus {
+    outline: 0;
+}
+button,
+input {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle;
+}
+button,
+input {
+    line-height: normal;
+}
+button {
+    text-transform: none;
+}
+button {
+    -webkit-appearance: button;
+    cursor: pointer;
+    *overflow: visible;
+}
+button[disabled] {
+    cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+button,
+input {
+    color: white;
+}
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+/*! CSS Used from: Embedded */
+.rdw_image_modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 235px;
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 2px;
+    z-index: 100;
+    background: #121212;
+    box-shadow: 3px 3px 5px black;
+}
+.rdw_image_modal_header {
+    font-size: 15px;
+    margin: 10px 0;
+    display: flex;
+}
+.rdw_image_modal_header_option {
+    width: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.rdw_image_modal_header_label_highlighted {
+    width: 80px;
+    border: 1px solid #121212;
+    margin-top: 5px;
+    background: #121212;
+    border-bottom: 2px solid #3137C9;
+}
+.rdw_image_modal_url_section {
+    display: flex;
+    align-items: center;
+}
+.rdw_image_modal_url_input {
+    width: 90%;
+    height: 35px;
+    margin: 15px 0 12px;
+    border: 1px solid #121212;
+    border-radius: 2px;
+    font-size: 15px;
+    padding: 0 5px;
+    background-color: #202020;
+}
+.rdw_image_modal_btn_section {
+    margin: 10px auto 0;
+}
+.rdw_image_modal_url_input:focus {
+    outline: none;
+}
+.rdw_image_modal_btn_add, .rdw_image_modal_btn_close {
+    margin: 0 5px;
+    width: 75px;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    background: #3137C9;
+    text-transform: capitalize;
+    transition: background .2s linear;
+}
+
+.rdw_image_modal_btn_close {
+    background: #ea8c1e;
+}
+
+.rdw_image_modal_btn_add:hover {
+    background: #2c31b4;
+}
+
+.rdw_image_modal_btn_close:hover {
+    background: #c37112;
+}
+
+.rdw_image_modal_btn:active {
+    box-shadow: 1px 1px 0 #bfbdbd inset;
+}
+.rdw_image_modal_btn:focus {
+    outline: none !important;
+}
+.rdw_image_modal_btn:disabled {
+    background: #ece9e9;
+}
+.rdw_image_mandatory_sign {
+    color: red;
+    margin-left: 3px;
+    margin-right: 3px;
+}

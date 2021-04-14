@@ -8,9 +8,9 @@ const PostTest = () => {
         <article className="post">
             <div className="post__actions">
                 <NavLink to='/'>вернуться назад</NavLink>
-                <a data-modal="share-modal">поделиться
+                <div className="post__actions-share-modal">поделиться
                     <img className="post__actions-icon" src={Share} alt="поделиться"/>
-                </a>
+                </div>
             </div>
             <div className="post__header">
                 <h1 className="post__title post__title--mb0">
@@ -18,7 +18,7 @@ const PostTest = () => {
                 </h1>
                 <ul className="post__data">
                     <li className="post__data-item">
-                        <time datetime="2021-02-14 12:26">14.02.2021</time>
+                        <time dateTime="2021-02-14 12:26">14.02.2021</time>
                     </li>
                     <li className="post__data-item">
                         <a href="/#">cоздание сайтов</a>
@@ -74,22 +74,22 @@ const PostTest = () => {
                         <li className="related__list-item">
                             <h4 className="related__list-title"><a href="/#">Как я сходил на FrontEnd Conf 2021</a>
                             </h4>
-                            <time className="related__list-date" datetime="2021-02-14 12:06">14.02.2021</time>
+                            <time className="related__list-date" dateTime="2021-02-14 12:06">14.02.2021</time>
                         </li>
                         <li className="related__list-item">
                             <h4 className="related__list-title"><a href="/#">Купил новый ноутбук за 150 000 руб</a>
                             </h4>
-                            <time className="related__list-date" datetime="2021-02-14 12:06">14.02.2021</time>
+                            <time className="related__list-date" dateTime="2021-02-14 12:06">14.02.2021</time>
                         </li>
                         <li className="related__list-item">
                             <h4 className="related__list-title"><a href="/#">Как писать код быстро и
                                 безболезненно?</a></h4>
-                            <time className="related__list-date" datetime="2021-02-14 12:06">14.02.2021</time>
+                            <time className="related__list-date" dateTime="2021-02-14 12:06">14.02.2021</time>
                         </li>
                         <li className="related__list-item">
                             <h4 className="related__list-title"><a href="/#">Купил новый ноутбук за 150 000 руб</a>
                             </h4>
-                            <time className="related__list-date" datetime="2021-02-14 12:06">14.02.2021</time>
+                            <time className="related__list-date" dateTime="2021-02-14 12:06">14.02.2021</time>
                         </li>
                     </ul>
                 </div>
@@ -99,8 +99,8 @@ const PostTest = () => {
                 <form className="form" action="/" method="POST">
                     <div className="form__group">
                             <textarea className="form__control form__control--textarea" name="comment-text"
-                                      placeholder="Текст комментария" data-autoresize></textarea>
-                        <span className="form__line"></span>
+                                      placeholder="Текст комментария" />
+                        <span className="form__line" />
                     </div>
                 </form>
                 <button className="btn btn--blue btn--rounded btn--small" type="submit">Отправить</button>
@@ -110,7 +110,7 @@ const PostTest = () => {
                             <img className="comments__avatar" src="http://placehold.it/30" alt="Avatar"/>
                             <div className="comments__author">
                                 <div className="comments__name">Александр Калыргин</div>
-                                <time className="comments__pubdate" datetime="2021-02-09 21:02">1 неделю назад
+                                <time className="comments__pubdate" dateTime="2021-02-09 21:02">1 неделю назад
                                 </time>
                             </div>
                         </div>
@@ -127,7 +127,7 @@ const PostTest = () => {
                                     <img className="comments__avatar" src="http://placehold.it/30" alt=""/>
                                     <div className="comments__author">
                                         <div className="comments__name">Александр Калыргин</div>
-                                        <time className="comments__pubdate" datetime="2021-02-09 21:02">1 неделю
+                                        <time className="comments__pubdate" dateTime="2021-02-09 21:02">1 неделю
                                             назад
                                         </time>
                                     </div>

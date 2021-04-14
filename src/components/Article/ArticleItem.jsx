@@ -13,9 +13,9 @@ const ArticleItem = (props) => {
             <article className="post">
                 <div className="post__actions">
                     <NavLink to='/'>вернуться назад</NavLink>
-                    <a data-modal="share-modal">поделиться
+                    <div className="post__actions-share-modal">поделиться
                         <img className="post__actions-icon" src={Share} alt="поделиться"/>
-                    </a>
+                    </div>
                 </div>
                 <div className="post__header">
                     <h1 className="post__title post__title--mb0">
@@ -30,7 +30,7 @@ const ArticleItem = (props) => {
                         </li>
                     </ul>
                 </div>
-                <div dangerouslySetInnerHTML={{__html: props.element.content.html}}></div>
+                <div dangerouslySetInnerHTML={{__html: props.element.content.html}} />
             </article>
         )
     }
