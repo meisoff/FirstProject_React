@@ -5,11 +5,7 @@ import { Route } from "react-router-dom";
 const Article = (props) => {
     
     let filteredArticle =
-        props.posts.filter(element => {
-            if (element.hasOwnProperty('link')) {
-                return element;
-            }
-        })
+        props.posts.filter(element => element.hasOwnProperty('link'));
     
     let articleElement =
         filteredArticle.map(element => {

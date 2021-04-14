@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 const WorksItem = (props) => {
 
@@ -16,7 +17,7 @@ const WorksItem = (props) => {
             </div>
             <div className="work__content">
                 <h2 className="work__title">
-                    <a href={props.link} target="_blank">{props.content.title}</a>
+                    <NavLink to={props.link} target="_blank">{props.content.title}</NavLink>
                 </h2>
                 <div className="work__description">
                     <p>
@@ -27,8 +28,8 @@ const WorksItem = (props) => {
                     {tagsItem}
                 </ul>
                 <div className="work__footer">
-                    <a className="btn btn--blue btn--rounded btn--small" href={props.link} target="_blank">Перейти на
-                        сайт</a>
+                    <NavLink to={props.link} className="btn btn--blue btn--rounded btn--small" target="_blank">Перейти на
+                        сайт</NavLink>
                 </div>
             </div>
         </article>

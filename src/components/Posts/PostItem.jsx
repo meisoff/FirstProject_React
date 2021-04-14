@@ -9,7 +9,7 @@ const PostItem = (props) => {
                 <article className="post">
                     <div className="post__header post__header--preview">
                         <NavLink to={props.link}>
-                            <div className="post__preview" alt={props.header.alt} style={{backgroundImage: `url(${props.header.image})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}} />
+                            <div className="post__preview" style={{backgroundImage: `url(${props.header.image})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}} />
                         </NavLink>
                     </div>
                     <div className="post__content">
@@ -40,9 +40,10 @@ const PostItem = (props) => {
                 <article className="post">
                     <div className="post__header">
                         <div className="embed">
+                            {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
                             <iframe src={props.header.video} frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen></iframe>
+                                    allowFullScreen />
                         </div>
                     </div>
                     <div className="post__content">

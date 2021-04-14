@@ -1,4 +1,3 @@
-import React from 'react';
 import Works from "./Works";
 import {connect} from "react-redux";
 

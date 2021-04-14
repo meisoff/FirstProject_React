@@ -1,4 +1,3 @@
-import React from 'react';
 import store from "../redux-store";
 import {EditorState, convertToRaw} from 'draft-js';
 import draftToHtml from 'draftjs-to-html';

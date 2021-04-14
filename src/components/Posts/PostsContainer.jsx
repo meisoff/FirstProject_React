@@ -1,10 +1,10 @@
-import React from 'react';
 import {connect} from "react-redux";
 import Posts from "./Posts";
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts
+        posts: state.posts,
+        currentPage: state.paginationList.currentPage,
     }
 }
 

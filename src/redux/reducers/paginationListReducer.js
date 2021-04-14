@@ -1,4 +1,3 @@
-import React from "react";
 import store from "../redux-store";
 
 const UPDATE_PAGINATION = "UPDATE_PAGINATION";
@@ -7,7 +6,7 @@ const UPDATE_TOTAL_POST_COUNT = "UPDATE_TOTAL_POST_COUNT";
 
 let initialState = {
     pageSize: 5,
-    totalPostCount: 14,
+    totalPostCount: 4,
     currentPage: 1
 }
 

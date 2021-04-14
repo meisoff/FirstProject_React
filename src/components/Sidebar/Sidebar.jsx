@@ -9,6 +9,7 @@ const Sidebar = () => {
     return (
     <aside className="sidebar" id="sidebar">
         <div className="sidebar__header">
+            {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
             <img src={SidebarHeader} alt="Sidebar photo" />
         </div>
         <div className="sidebar__content">

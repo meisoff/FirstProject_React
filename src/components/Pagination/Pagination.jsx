@@ -12,7 +12,6 @@ class Pagination extends React.Component {
         }
     }
 
-
     render() {
         let totalPages =
             Math.ceil(this.props.totalPostCount / this.props.pageSize);
@@ -24,20 +23,64 @@ class Pagination extends React.Component {
         }
 
         let pagination = pages.map(element => {
-            if (element === this.props.currentPage) {
-                return (
-                    <li className="pagination__item">
-                        <a className="pagination__link active" onClick={() => this.props.updatePaginationList(element)}
-                           href="/#">{element}</a>
-                    </li>
-                )
+            if (pages.length > 3 ) {
+                if (element === this.props.currentPage  && element !== 1) {
+                    return (
+                        <>
+                            <li className="pagination__item" key={(element - 1).toString()}>
+                                <a className="pagination__link" onClick={() => this.props.updatePaginationList((element - 1))}
+                                   href="/#">{(element - 1)}</a>
+                            </li>
+
+                            <li className="pagination__item" key={element.toString()}>
+                                <a className="pagination__link active" onClick={() => this.props.updatePaginationList(element)}
+                                   href="/#">{element}</a>
+                            </li>
+
+                            <li className="pagination__item" key={(element + 1).toString()}>
+                                <a className="pagination__link" onClick={() => this.props.updatePaginationList((element + 1))}
+                                   href="/#">{(element + 1)}</a>
+                            </li>
+                        </>
+                    )
+                } else {
+                    if (element === this.props.currentPage) {
+                        return (
+                            <>
+                                <li className="pagination__item" key={element.toString()}>
+                                    <a className="pagination__link active" onClick={() => this.props.updatePaginationList(element)}
+                                       href="/#">{element}</a>
+                                </li>
+
+                                <li className="pagination__item" key={(element + 1).toString()}>
+                                    <a className="pagination__link" onClick={() => this.props.updatePaginationList((element + 1))}
+                                       href="/#">{(element + 1)}</a>
+                                </li>
+
+                                <li className="pagination__item" key={(element + 1).toString()}>
+                                    <a className="pagination__link" onClick={() => this.props.updatePaginationList((element + 2))}
+                                       href="/#">{(element + 2)}</a>
+                                </li>
+                            </>
+                        )
+                    }
+                }
             } else {
-                return (
-                    <li className="pagination__item">
-                        <a className="pagination__link" onClick={() => this.props.updatePaginationList(element)}
-                           href="/#">{element}</a>
-                    </li>
-                )
+                if (element === this.props.currentPage) {
+                    return (
+                        <li className="pagination__item" key={element.toString()}>
+                            <a className="pagination__link active" onClick={() => this.props.updatePaginationList(element)}
+                               href="/#">{element}</a>
+                        </li>
+                    )
+                } else {
+                    return (
+                        <li className="pagination__item" key={element.toString()}>
+                            <a className="pagination__link" onClick={() => this.props.updatePaginationList(element)}
+                               href="/#">{element}</a>
+                        </li>
+                    )
+                }
             }
         })
 
