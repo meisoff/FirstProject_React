@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.preloader__wrapper {
+    background-color: #202020;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.preloader__item {
+    display: block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+}
