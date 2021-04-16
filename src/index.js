@@ -1,14 +1,18 @@
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";
 import ReactDOM from "react-dom";
-import React from "react";
-import App from "./App";
+import React, { Suspense } from "react";
 import {Provider} from "react-redux";
+import Preloader from "./components/common/Preloader/Preloader";
+const App = React.lazy(() => import("./App"));
+
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <App/>
+            <Suspense fallback={<Preloader />}>
+                <App/>
+            </Suspense>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

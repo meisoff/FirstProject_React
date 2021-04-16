@@ -43,6 +43,7 @@ const Profile = () => {
 
                 <button className="btn btn--blue btn--rounded btn--small" type="submit">Сохранить</button>
             </form>
+
         </div>
     )
 }
