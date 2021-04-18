@@ -47,4 +47,8 @@
             background: none;
         }
     }
+
+    &--line {
+        border-bottom: 1px solid darken($blue, 10%);
+    }
 }

@@ -1,0 +1,100 @@
+import React, {Component} from 'react';
+import {connect} from "react-redux";
+import Social from "./Social";
+import Following from "./Following";
+import Followers from "./Followers";
+import {followToggle, setUsers} from "../../redux/reducers/userReducer";
+import {authLoginLength} from "../Header/AuthUser";
+import baseUserAvatar from "../../images/user_photo.png";
+import {usersAPI} from "../../api/api";
+
+const POST = "POST";
+const DELETE = "DELETE";
+
+
+class SocialContainer extends Component {
+    componentDidMount() {
+        if (this.props.users.length === 0) {
+            usersAPI.getUsers()
+                .then(data => {
+                    this.props.setUsers(data.items);
+                })
+        }
+    }
+
+    separateFunc = (array) => {
+        let result = [];
+        let collected = [];
+        array.forEach(item => {
+            collected.push(item);
+            if (collected.length === 4) {
+                result.push(collected);
+                collected = [];
+            }
+        });
+
+        return result;
+    }
+
+    generateFollowItem = (array) => {
+        return (
+            array.map(element => {
+                let key = element.id;
+                return (
+                    <li className="follow__item" key={key}>
+
+                        {(element.photos.small != null ? <div className="follow__item-img"
+                                                              style={{backgroundImage: `url(${element.photos.small})`}}/> :
+                            <img className="follow__item-img" src={baseUserAvatar} alt="BaseImg"/>)}
+
+                        <div className="follow__item-login">{authLoginLength(element.name)}</div>
+
+                        {(element.followed) ? (
+                            <div className="follow__button follow__button--active" onClick={() => usersAPI.changeFollow(DELETE, element.id)}>Подписка</div>
+                        ) : (
+                            <div className="follow__button" onClick={() => usersAPI.changeFollow(POST, element.id)}>Подписаться</div>
+                        )}
+                    </li>
+                )
+            })
+        )
+    }
+
+    setColumnOfUsers = (array, element) => {
+        if (this.props.users.length !== 0) {
+            let result = this.separateFunc(array);
+            return this.generateFollowItem(result[element])
+        }
+    }
+
+    render() {
+        return (
+            <div className="social__body">
+                <h1 className="page__title">Сообщество</h1>
+
+                <div className="social__follow">
+                    <div className="social__follow-item  social__follow-item--left">
+                        <Following/>
+                    </div>
+
+                    <div className="social__follow-item  social__follow-item--right">
+                        <Followers/>
+                    </div>
+                </div>
+
+                <div className="social__search">
+                    <Social columnOne={this.setColumnOfUsers(this.props.users, 0)}
+                            columnTwo={this.setColumnOfUsers(this.props.users, 1)}/>
+                </div>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        users: state.usersFirstInfo.users
+    }
+}
+
+export default connect(mapStateToProps, {setUsers, followToggle})(SocialContainer);

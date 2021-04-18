@@ -1,10 +1,11 @@
 import React from "react";
 import NavLeft from "./NavLeft";
-import NavRight from "./NavRight";
+import AuthUser from "./AuthUser";
 import Burger from "./Burger";
 import Search from "./Search";
+import NoneAuthUser from "./NoneAuthUser";
 
-const Header = () => {
+const Header = (props) => {
     return (
     <header className="header">
         <div className="header__left">
@@ -12,12 +13,13 @@ const Header = () => {
             <Burger />
         </div>
         <div className="header__right">
-            <NavRight />
+            {props.isAuth ? <AuthUser login={props.login}/> : <NoneAuthUser />}
             <Search />
         </div>
 
     </header>
     )
 }
+
 
 export default Header;

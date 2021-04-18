@@ -2,7 +2,7 @@ import React from "react";
 import SidebarHeader from "../../images/sidebar__header.jpg";
 import Inst from "../../images/inst.svg";
 import Vk from "../../images/vk.svg";
-import Pinterest from "../../images/pinterest.svg";
+import Github from "../../images/GitHub.png"
 import {NavLink} from "react-router-dom";
 
 const Sidebar = () => {
@@ -14,7 +14,7 @@ const Sidebar = () => {
         </div>
         <div className="sidebar__content">
             <div className="profile">
-                <img className="profile__avatar" src="http://placehold.it/100" alt="" />
+                <img className="profile__avatar" src="https://sun9-2.userapi.com/impg/I9s8f_Zsnit4SNdm1QUS2sgp2bw4e90ZRPZOVw/O4gTLuvfqJ0.jpg?size=1199x1200&quality=96&sign=023ae353dccafd3279a7f0768b795144&type=album" alt="" />
                     <div className="profile__header">
                         <div className="profile__name">Александр Калыргин</div>
                         <div className="profile__prof">блог Front-end разработчика</div>
@@ -22,20 +22,20 @@ const Sidebar = () => {
 
                     <ul className="social social--sidebar">
                         <li className="social__item">
-                            <a className="social__link" href="/#" target="_blank">
+                            <a className="social__link" href="https://www.instagram.com/kalyrg1n/" target="_blank" rel="noreferrer">
                                 <img src={Inst} alt="Александр Instagram Калыргин" />
                             </a>
                         </li>
 
                         <li className="social__item">
-                            <a className="social__link" href="/#" target="_blank">
+                            <a className="social__link" href="https://vk.com/official_meis" target="_blank" rel="noreferrer">
                                 <img src={Vk} alt="Александр VK Калыргин" />
                             </a>
                         </li>
 
                         <li className="social__item">
-                            <a className="social__link" href="/#" target="_blank">
-                                <img src={Pinterest} alt="Александр Pinterest Калыргин" />
+                            <a className="social__link" href="https://github.com/meisoff" target="_blank" rel="noreferrer">
+                                <img src={Github} style={{width: 19, height: 19}} alt="Александр GitHub Калыргин" />
                             </a>
                         </li>
                     </ul>

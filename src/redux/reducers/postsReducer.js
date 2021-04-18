@@ -120,7 +120,7 @@ const postsReducer = (state = initialState, action) => {
                 content: {
                     description: action.description,
                 },
-
+                key: state.length + 1,
                 footer: footer()
             }, ...state]
         case ADD_ARTICLE:

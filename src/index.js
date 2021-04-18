@@ -1,11 +1,14 @@
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";
 import ReactDOM from "react-dom";
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import {Provider} from "react-redux";
 import Preloader from "./components/common/Preloader/Preloader";
-const App = React.lazy(() => import("./App"));
-
+const App = lazy(() => {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(import("./App")), 2000);
+    });
+});
 
 ReactDOM.render(
     <React.StrictMode>

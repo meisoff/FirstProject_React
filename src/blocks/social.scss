@@ -13,3 +13,34 @@
 .social__item {
     margin: 0 .75rem;
 }
+
+.social__follow {
+    display: flex;
+    justify-content: center;
+}
+
+.social__follow-item {
+    width: 290px;
+    background-color: $primary;
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 5px;
+
+    &--right {
+        margin-left: 1rem;
+    }
+
+    &--left {
+        margin-right: 1rem;
+    }
+}
+.social__search {
+    margin-top: 5rem;
+}
+
+.social__bg {
+    width: 100%;
+    background-color: $primary;
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 5px;
+    padding-bottom: 2rem;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 
 class Pagination extends React.Component {
+
     nextPaginationList = (value) => {
         if (value < Math.ceil(this.props.totalPostCount / this.props.pageSize)) {
             (this.props.updatePaginationList(value + 1))
@@ -13,10 +14,8 @@ class Pagination extends React.Component {
     }
     paginationElement = (element, active) => {
         return (
-            <li className="pagination__item" key={(element).toString()}>
-                <a className={"pagination__link " + active} onClick={() => this.props.updatePaginationList(element)}
-                   href="/#">{element}</a>
-            </li>
+            <a className={"pagination__link " + active} onClick={() => this.props.updatePaginationList(element)}
+               href="/#">{element}</a>
         )
     }
 
@@ -31,38 +30,83 @@ class Pagination extends React.Component {
         }
 
         let pagination = pages.map(element => {
+
+            let key = (ownElement, secondaryElement ) => {
+                return `element${ownElement}` + secondaryElement.toString();
+            }
+
             if (pages.length > 3) {
-                if (element === this.props.currentPage && element !== 1 && element !== pages.length - 1) {
+                if (element === this.props.currentPage && element !== 1 && element !== pages.length ) {
                     return (
-                        <>
-                            {this.paginationElement(element - 1)}
-                            {this.paginationElement(element, "active")}
-                            {this.paginationElement(element + 1)}
-                        </>
-                    )
-                } else {
-                    if (element === this.props.currentPage) {
-                        return (
-                            <>
+                        <ul className="pagination--wrapper" key={element}>
+                            <li className="pagination__item" key={key(element, element - 1)}>
+                                {this.paginationElement(element - 1)}
+                            </li>
+
+                            <li className="pagination__item" key={key(element, element)}>
                                 {this.paginationElement(element, "active")}
+                            </li>
+
+                            <li className="pagination__item" key={key(element, element + 1)}>
                                 {this.paginationElement(element + 1)}
-                                {this.paginationElement(element + 2)}
-                            </>
+                            </li>
+                        </ul>
+                    )
+                }
+                else {
+                    if (element === this.props.currentPage && element === pages.length) {
+                        return (
+                            <ul className="pagination--wrapper" key={element}>
+                                <li className="pagination__item" key={key(element, element - 2)}>
+                                    {this.paginationElement(element - 2)}
+                                </li>
+
+                                <li className="pagination__item" key={key(element, element - 1)}>
+                                    {this.paginationElement(element - 1)}
+                                </li>
+
+                                <li className="pagination__item" key={key(element, element)}>
+                                    {this.paginationElement(element, "active")}
+                                </li>
+                            </ul>
                         )
                     }
+                    else if (element === 1 && element === this.props.currentPage) {
+                        return (
+                            <ul className="pagination--wrapper" key={element}>
+                                <li className="pagination__item" key={key(element, element)}>
+                                    {this.paginationElement(element, "active")}
+                                </li>
+
+                                <li className="pagination__item" key={key(element, element + 1)}>
+                                    {this.paginationElement(element + 1)}
+                                </li>
+
+                                <li className="pagination__item" key={key(element, element + 2)}>
+                                    {this.paginationElement(element + 2)}
+                                </li>
+                            </ul>
+                        )
+                    }
+                    else return null
                 }
-            } else {
+            }
+            else {
                 if (element === this.props.currentPage) {
                     return (
-                        <>
-                            {this.paginationElement(element, "active")}
-                        </>
+                        <ul className="pagination--wrapper" key={element}>
+                            <li className="pagination__item" key={key(element, element)}>
+                                {this.paginationElement(element, "active")}
+                            </li>
+                        </ul>
                     )
                 } else {
                     return (
-                        <>
-                            {this.paginationElement(element)}
-                        </>
+                        <ul className="pagination--wrapper" key={element}>
+                            <li className="pagination__item" key={key(element, element)}>
+                                {this.paginationElement(element)}
+                            </li>
+                        </ul>
                     )
                 }
             }

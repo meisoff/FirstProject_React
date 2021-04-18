@@ -1,5 +1,5 @@
 import './App.scss';
-import Header from "./components/Header/Header"
+import HeaderContainer from "./components/Header/HeaderContainer"
 import Sidebar from "./components/Sidebar/Sidebar";
 import HomePage from "./components/Homepage/HomePage";
 import {BrowserRouter, Route} from "react-router-dom";
@@ -8,13 +8,16 @@ import WorksContainer from "./components/Works/WorksContainer";
 import CreateArticleContainer from "./components/Article/CreateArticleContainer";
 import ArticleContainer from "./components/Article/ArticleContainer";
 import React from "react";
+import SignUpContainer from "./components/SignUp/SignUpContainer";
+import SignInContainer from "./components/SignIn/SignInContainer";
+import SocialContainer from "./components/Social/SocialContainer";
 
 function App() {
 
     return (
         <BrowserRouter>
             <div className="page" id="page">
-                <Header/>
+                <HeaderContainer/>
                 <Sidebar/>
 
                 <main className="main">
@@ -25,6 +28,9 @@ function App() {
                         <Route path='/profile' component={Profile} />
                         <Route path='/posts' render={ () => <ArticleContainer /> } />
                         <Route exact path='/create_article' render={ () => <CreateArticleContainer /> } />
+                        <Route path='/signup' render={ () => <SignUpContainer />} />
+                        <Route path='/signin' render={ () => <SignInContainer />} />
+                        <Route path='/social' render={ () => <SocialContainer />} />
                     </div>
                 </main>
             </div>

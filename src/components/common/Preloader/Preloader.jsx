@@ -8,7 +8,7 @@ class Preloader extends Component {
         return (
             <div className={s.preloader__wrapper}>
                 <div className={s.preloader__item}>
-                    <HashLoader size='80' color='#3137C9'/>
+                    <HashLoader size={80} color='#3137C9'/>
                 </div>
             </div>
         )

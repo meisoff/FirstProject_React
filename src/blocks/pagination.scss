@@ -6,6 +6,12 @@
     @include breakpoint($tablet-bp) {
         margin-top: 5rem;
     }
+
+    &--wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 0;
+    }
 }
 
 .pagination__item {
