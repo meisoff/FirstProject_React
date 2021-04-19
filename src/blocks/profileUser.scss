@@ -1,0 +1,61 @@
+.profileUser__login {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.profileUser__ownInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profileUser__avatar {
+  display: block;
+  width: 40%;
+
+  & img {
+    width: 20rem;
+  }
+}
+
+.profileUser__shortInfo {
+  width: 60%;
+}
+
+.profileUser__fullName {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.profileUser__status {
+  height: 3rem;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  padding-top: .2rem;
+
+  text-align: center;
+  line-height: 1.5;
+
+  background-color: $secondary;
+
+  border-radius: 1rem;
+}
+
+.profileUser__contacts {
+  padding: 1rem;
+  background-color: $secondary;
+}
+
+.profileUser__contacts-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+
+  color: darken($white, 5%);
+}
+
+.profileUser__aboutMe {
+  padding: 1rem;
+
+  background-color: $secondary;
+  border-radius: 1rem;
+}

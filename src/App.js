@@ -11,6 +11,7 @@ import React from "react";
 import SignUpContainer from "./components/SignUp/SignUpContainer";
 import SignInContainer from "./components/SignIn/SignInContainer";
 import SocialContainer from "./components/Social/SocialContainer";
+import ProfileUser from "./components/Profile/ProfileUser";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
                         <Route path='/signup' render={ () => <SignUpContainer />} />
                         <Route path='/signin' render={ () => <SignInContainer />} />
                         <Route path='/social' render={ () => <SocialContainer />} />
+                        <Route path='/profile_user' render={ () => <ProfileUser />} />
                     </div>
                 </main>
             </div>
