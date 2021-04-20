@@ -11,7 +11,7 @@
 
 .profileUser__avatar {
   display: block;
-  width: 40%;
+  background: $secondary;
 
   & img {
     width: 20rem;
@@ -28,12 +28,11 @@
 }
 
 .profileUser__status {
-  height: 3rem;
   margin-top: 1rem;
   margin-bottom: .5rem;
-  padding-top: .2rem;
+  padding: .5rem 2rem;
 
-  text-align: center;
+  font-size: 1.4rem;
   line-height: 1.5;
 
   background-color: $secondary;

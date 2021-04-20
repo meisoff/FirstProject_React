@@ -3,23 +3,14 @@ import {connect} from "react-redux";
 import Social from "./Social";
 import Following from "./Following";
 import Followers from "./Followers";
-import {followToggle, setUsers} from "../../redux/reducers/userReducer";
+import {getUsers, userFollow, userUnfollow} from "../../redux/reducers/userReducer";
 import {authLoginLength} from "../Header/AuthUser";
 import baseUserAvatar from "../../images/user_photo.png";
-import {usersAPI} from "../../api/api";
-
-const POST = "POST";
-const DELETE = "DELETE";
 
 
 class SocialContainer extends Component {
     componentDidMount() {
-        if (this.props.users.length === 0) {
-            usersAPI.getUsers()
-                .then(data => {
-                    this.props.setUsers(data.items);
-                })
-        }
+        this.props.getUsers();
     }
 
     separateFunc = (array) => {
@@ -49,10 +40,12 @@ class SocialContainer extends Component {
 
                         <div className="follow__item-login">{authLoginLength(element.name)}</div>
 
-                        {(element.followed) ? (
-                            <div className="follow__button follow__button--active" onClick={() => usersAPI.changeFollow(DELETE, element.id)}>Подписка</div>
+                        {element.followed ? (
+                            <button disabled={this.props.isButtonDisabled.some(id => id === element.id)} className="follow__button follow__button--active"
+                                    onClick={() => {this.props.userUnfollow(element.id)}}>Подписка</button>
                         ) : (
-                            <div className="follow__button" onClick={() => usersAPI.changeFollow(POST, element.id)}>Подписаться</div>
+                            <button disabled={this.props.isButtonDisabled.some(id => id === element.id)} className="follow__button"
+                                    onClick={() => {this.props.userFollow(element.id)}}>Подписаться</button>
                         )}
                     </li>
                 )
@@ -93,8 +86,9 @@ class SocialContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersFirstInfo.users
+        users: state.usersFirstInfo.users,
+        isButtonDisabled: state.usersFirstInfo.isButtonDisabled
     }
 }
 
-export default connect(mapStateToProps, {setUsers, followToggle})(SocialContainer);
+export default connect(mapStateToProps, {getUsers, userUnfollow, userFollow})(SocialContainer);

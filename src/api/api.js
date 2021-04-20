@@ -1,5 +1,4 @@
 import * as axios from "axios";
-import {followToggle} from "../redux/reducers/userReducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -20,29 +19,14 @@ export const usersAPI = {
     postFollow(userId) {
         return instance.post(`follow/${userId}`, {})
             .then (response => {
-                if (response.data.resultCode === 0) {
-                    followToggle(userId);
-                }
+                return response.data
             })
     },
 
     deleteFollow(userId) {
         return instance.delete(`follow/${userId}`)
             .then (response => {
-                if (response.data.resultCode === 0) {
-                    followToggle(userId);
-                }
+                return response.data
             })
     },
-
-    changeFollow(type, id) {
-        switch (type) {
-            case "POST":
-                return this.postFollow(id);
-            case "DELETE":
-                return this.deleteFollow(id);
-            default:
-                return;
-        }
-    }
 }
