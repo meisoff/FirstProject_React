@@ -8,6 +8,7 @@ import {
     onTitleStateChange, updateUrlState, uploadFile
 } from "../../redux/reducers/createArticleReducer";
 import {updateTotalPostCount} from "../../redux/reducers/paginationListReducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 const mapStateToProps = (state) => {
     return {
@@ -20,7 +21,9 @@ const mapStateToProps = (state) => {
     }
 }
 
+let AuthRedirectComponent = withAuthRedirect(CreateArticle);
+
 const CreateArticleContainer = connect(mapStateToProps, {onEditorStateChanged, onTitleStateChange, onDescriptionStateChange, onAddArticle, onClickButton, uploadFile, onAddWindowUrl, closeWindowUrl, updateUrlState, updateTotalPostCount
-})(CreateArticle);
+})(AuthRedirectComponent);
 
 export default CreateArticleContainer;
