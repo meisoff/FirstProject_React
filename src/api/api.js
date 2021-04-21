@@ -9,6 +9,14 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
+    authentication() {
+        return axios.get(`https://social-network.samuraijs.com/api/1.1/auth/me`, {
+            withCredentials: true
+        })
+            .then (response => {
+                return response.data
+            })
+    },
     getUsers() {
         return instance.get("users?count=10")
             .then (response => {

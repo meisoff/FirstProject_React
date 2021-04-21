@@ -6,6 +6,7 @@ import Followers from "./Followers";
 import {getUsers, userFollow, userUnfollow} from "../../redux/reducers/userReducer";
 import {authLoginLength} from "../Header/AuthUser";
 import baseUserAvatar from "../../images/user_photo.png";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class SocialContainer extends Component {
@@ -87,8 +88,9 @@ class SocialContainer extends Component {
 const mapStateToProps = (state) => {
     return {
         users: state.usersFirstInfo.users,
-        isButtonDisabled: state.usersFirstInfo.isButtonDisabled
+        isButtonDisabled: state.usersFirstInfo.isButtonDisabled,
     }
 }
+let AuthRedirectComponent = withAuthRedirect(SocialContainer);
 
-export default connect(mapStateToProps, {getUsers, userUnfollow, userFollow})(SocialContainer);
+export default connect(mapStateToProps, {getUsers, userUnfollow, userFollow})(AuthRedirectComponent);
