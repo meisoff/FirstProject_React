@@ -1,28 +1,85 @@
-import React, {Component} from 'react';
+import React from "react";
+import { Formik, Form, useField } from "formik";
+import * as Yup from "yup";
 import {NavLink} from "react-router-dom";
 
-class SignIn extends Component {
+const MyTextInput = ({ label, ...props }) => {
+    const [field, meta] = useField(props);
+    return (
+        <div className="form__group form__group--md">
+            <label htmlFor={props.id || props.name}>{label}</label>
+            <input className="form__control" {...field} {...props} />
+            <span className="form__line" />
+            {meta.touched && meta.error ? (
+                <div className="form__error">{meta.error}</div>
+            ) : null}
+        </div>
+    );
+};
 
-    render() {
-        return (
-            <div>
-                <h1 className="page__title page__title--center">Вход</h1>
+const MyCheckbox = ({ children, ...props }) => {
+    const [field, meta] = useField({ ...props, type: "checkbox" });
+    return (
+        <div className="form__accept">
+            <label className="form__accept-button">
+                <input type="checkbox" {...field} {...props} />
+                <span>{children}</span>
+            </label>
+            {meta.touched && meta.error ? (
+                <div className="form__error">{meta.error}</div>
+            ) : null}
+        </div>
+    );
+};
 
-                <form className="form form--auth">
+const SignIn = () => {
+    return (
+        <>
+            <h1 className="page__title page__title--center">Вход</h1>
+            <Formik
+                initialValues={{
+                    email: "",
+                    password: "",
+                    rememberMe: false, // added for our checkbox
+                }}
+                validationSchema={Yup.object({
+                    email: Yup.string()
+                        .email("Неверный email адрес")
+                        .required("*Необходимое поле"),
+                    password: Yup.string()
+                        .min(8, "Наименьшая длина - 8")
+                        .matches(/[a-zA-Z]/, "Используйте латиницу")
+                        .required("*Необходимое поле"),
+                })}
+                onSubmit={(values, { setSubmitting }) => {
+                    setTimeout(() => {
+                        alert(JSON.stringify(values, null, 2));
+                        setSubmitting(false);
+                    }, 400);
+                }}
+            >
+                <Form className="form form--auth">
+                    <MyTextInput
+                        label="Ваш e-mail"
+                        name="email"
+                        type="email"
+                        placeholder="Ваш email адрес"
+                    />
 
-                    <div className="form__group form__group--md">
-                        <input type="email" className="form__control" placeholder="Ваш e-mail" />
-                            <span className="form__line" />
-                    </div>
+                    <MyTextInput
+                        label="Пароль"
+                        name="password"
+                        type="password"
+                        placeholder="Ваш пароль"
+                    />
 
-                    <div className="form__group form__group--md">
-                        <input type="password" className="form__control" placeholder="Пароль" />
-                            <span className="form__line" />
-                    </div>
+                    <MyCheckbox name="rememberMe">
+                        Запомнить меня?
+                    </MyCheckbox>
 
                     <div className="form__footer form__footer--center">
                         <div className="form__group form__group--md">
-                            <button className="btn btn--blue btn--rounded btn--small">Вход</button>
+                            <button type="submit" className="btn btn--blue btn--rounded btn--small">Вход</button>
                         </div>
                         <ul className="form__footer-list">
                             <li>
@@ -33,10 +90,10 @@ class SignIn extends Component {
                             </li>
                         </ul>
                     </div>
-                </form>
-            </div>
-        )
-    }
-}
+                </Form>
+            </Formik>
+        </>
+    );
+};
 
 export default SignIn;

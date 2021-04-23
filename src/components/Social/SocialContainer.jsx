@@ -7,6 +7,7 @@ import {getUsers, userFollow, userUnfollow} from "../../redux/reducers/userReduc
 import {authLoginLength} from "../Header/AuthUser";
 import baseUserAvatar from "../../images/user_photo.png";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class SocialContainer extends Component {
@@ -42,11 +43,17 @@ class SocialContainer extends Component {
                         <div className="follow__item-login">{authLoginLength(element.name)}</div>
 
                         {element.followed ? (
-                            <button disabled={this.props.isButtonDisabled.some(id => id === element.id)} className="follow__button follow__button--active"
-                                    onClick={() => {this.props.userUnfollow(element.id)}}>Подписка</button>
+                            <button disabled={this.props.isButtonDisabled.some(id => id === element.id)}
+                                    className="follow__button follow__button--active"
+                                    onClick={() => {
+                                        this.props.userUnfollow(element.id)
+                                    }}>Подписка</button>
                         ) : (
-                            <button disabled={this.props.isButtonDisabled.some(id => id === element.id)} className="follow__button"
-                                    onClick={() => {this.props.userFollow(element.id)}}>Подписаться</button>
+                            <button disabled={this.props.isButtonDisabled.some(id => id === element.id)}
+                                    className="follow__button"
+                                    onClick={() => {
+                                        this.props.userFollow(element.id)
+                                    }}>Подписаться</button>
                         )}
                     </li>
                 )
@@ -87,10 +94,12 @@ class SocialContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersFirstInfo.users,
-        isButtonDisabled: state.usersFirstInfo.isButtonDisabled,
+        users: state.usersInfo.users,
+        isButtonDisabled: state.usersInfo.isButtonDisabled,
     }
 }
-let AuthRedirectComponent = withAuthRedirect(SocialContainer);
 
-export default connect(mapStateToProps, {getUsers, userUnfollow, userFollow})(AuthRedirectComponent);
+export default compose(
+    connect(mapStateToProps, {getUsers, userUnfollow, userFollow}),
+    withAuthRedirect
+)(SocialContainer)

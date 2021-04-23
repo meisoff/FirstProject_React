@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import CreateArticle from "./CreateArticle";
+import {compose} from "redux";
 import {
     closeWindowUrl,
     onAddArticle, onAddWindowUrl, onClickButton,
@@ -21,9 +22,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(CreateArticle);
-
-const CreateArticleContainer = connect(mapStateToProps, {onEditorStateChanged, onTitleStateChange, onDescriptionStateChange, onAddArticle, onClickButton, uploadFile, onAddWindowUrl, closeWindowUrl, updateUrlState, updateTotalPostCount
-})(AuthRedirectComponent);
-
-export default CreateArticleContainer;
+export default compose(connect(mapStateToProps, {onEditorStateChanged, onTitleStateChange, onDescriptionStateChange, onAddArticle, onClickButton, uploadFile, onAddWindowUrl, closeWindowUrl, updateUrlState, updateTotalPostCount
+}) ,withAuthRedirect)(CreateArticle);

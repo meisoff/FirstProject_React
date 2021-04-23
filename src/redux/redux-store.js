@@ -16,7 +16,7 @@ let reducers = combineReducers({
     paginationList: paginationListReducer,
     createArticle: createArticleReducer,
     auth: authUserReducer,
-    usersFirstInfo: userReducer,
+    usersInfo: userReducer,
 })
 
 let store = createStore(reducers, applyMiddleware(thunk));
