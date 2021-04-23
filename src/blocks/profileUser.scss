@@ -1,60 +1,134 @@
-.profileUser__login {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+.profileUser__bg {
+  padding: 3rem;
+
+  background: $primary;
+  box-shadow: 0 15px 25px rgba($black, .35);
+
+  border-radius: .5rem;
 }
 
 .profileUser__ownInfo {
   display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
   justify-content: space-between;
 }
 
 .profileUser__avatar {
   display: block;
-  background: $secondary;
 
   & img {
-    width: 20rem;
+    width: 15rem;
+  }
+
+  &-button {
+    margin-top: 1rem;
+
+    & button {
+      width: 100%;
+    }
   }
 }
 
 .profileUser__shortInfo {
-  width: 60%;
+  flex: 1;
+
+  background: $bg-elements;
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 5px 10px rgba($black, .35);
+
 }
 
 .profileUser__fullName {
-  font-size: 1.8rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+
+  font-size: 2.2rem;
   font-weight: 500;
+  line-height: 2.1rem;
 }
 
 .profileUser__status {
+  padding: .5rem 1rem .5rem 1rem;
+  margin-bottom: 1rem;
+
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: darken($white, 10%);
+
+  background-color: $primary;
+  border-radius: .5rem;
+
+  & input {
+    margin-bottom: 0;
+    width: 100%;
+    color: darken($white, 10%);
+    font-size: 1.1rem;
+
+    background-color: $primary;
+    border:none;
+  }
+
+  & div {
+    width: 100%;
+    cursor: pointer;
+    height: 1.4rem;
+  }
+}
+
+.profileUser__shortDescription {
+  padding: 1rem 1rem 0 1rem;
+
+  background: $primary;
+  border-radius: .5rem;
+}
+
+.profileUser__item {
+  padding-bottom: 1rem;
+}
+
+.profileUser__wrapper-description {
   margin-top: 1rem;
-  margin-bottom: .5rem;
-  padding: .5rem 2rem;
+  padding-bottom: 1rem;
+}
+
+.profileUser__item-title {
+  font-size: 1.8rem;
+  line-height: 1;
+  font-weight: 600;
+
+  color: $white;
+}
+
+.profileUser__item-list {
+  margin-top: 1rem;
+}
+
+.profileUser__list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
   font-size: 1.4rem;
-  line-height: 1.5;
+  line-height: 1.8;
+  color: darken($white, 10%);
 
-  background-color: $secondary;
+  &-flex1 {
+    flex: 1;
+    min-width: 10rem;
+  }
+  &-flex2 {
+    flex: 2;
+  }
 
-  border-radius: 1rem;
-}
-
-.profileUser__contacts {
-  padding: 1rem;
-  background-color: $secondary;
-}
-
-.profileUser__contacts-title {
-  font-size: 1.6rem;
-  font-weight: 500;
-
-  color: darken($white, 5%);
 }
 
 .profileUser__aboutMe {
-  padding: 1rem;
+  margin-top: 3rem;
 
-  background-color: $secondary;
-  border-radius: 1rem;
+  background: $bg-elements;
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 5px 10px rgba($black, .35);
 }

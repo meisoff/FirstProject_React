@@ -10,8 +10,8 @@ import ArticleContainer from "./components/Article/ArticleContainer";
 import React from "react";
 import SignUpContainer from "./components/SignUp/SignUpContainer";
 import SignInContainer from "./components/SignIn/SignInContainer";
-import ProfileUser from "./components/Profile/ProfileUser";
 import SocialContainer from "./components/Social/SocialContainer";
+import ProfileUserContainer from "./components/Profile/ProfileUserContainer";
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
                         <Route path='/signup' render={ () => <SignUpContainer />} />
                         <Route path='/signin' render={ () => <SignInContainer />} />
                         <Route path='/social' render={ () => <SocialContainer />} />
-                        <Route path='/profile_user' render={ () => <ProfileUser />} />
+                        <Route path='/profile_user' render={ () => <ProfileUserContainer />} />
                     </div>
                 </main>
             </div>

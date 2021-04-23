@@ -45,6 +45,17 @@
     }
 }
 
+.form__accept-button {
+    & span {
+        margin-left: 1rem;
+    }
+}
+
+.form__accept {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
 .form__line {
     width: 0;
     height: 1px;
@@ -59,11 +70,24 @@
     transition: width 0.2s linear;
 }
 
+.form__error {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    color: darken(red, 20%);
+}
+
 .form__footer {
 
     &--center {
         text-align: center;
     }
+}
+
+.form__acceptedTerms {
+    color: $blue;
 }
 
 .form__footer-list {

@@ -1,13 +1,20 @@
-import {usersAPI} from "../../api/api";
+import {profileAPI, usersAPI} from "../../api/api";
 import store from "../redux-store";
 
 const FOLLOW_TOGGLE = "FOLLOW_TOGGLE";
 const SET_USERS = "SET_USERS";
 const BUTTON_DISABLE_TOGGLE = "BUTTON_DISABLE_TOGGLE";
+const SET_STATUS = "SET_STATUS";
 
 let initialState = {
     users: [],
     isButtonDisabled: [],
+    status: "",
+    aboutMe: "",
+    contacts: null,
+    lookingForAJob: false,
+    lookingForAJobDescription: "",
+    fullName: "",
 }
 
 const userReducer = (state = initialState, action) => {
@@ -28,30 +35,31 @@ const userReducer = (state = initialState, action) => {
                     ? [...state.isButtonDisabled, action.userId]
                     : [...state.isButtonDisabled.filter(id => id !== action.userId)]
             }
+        case SET_STATUS:
+            return {
+                ...state, status: action.status,
+            }
+
         default:
             return state;
     }
 }
-
 export const setUsers = (users) => {
     return {
         type: SET_USERS, users
     }
 }
-
 export const followToggle = (userId) => {
     return {
         type: FOLLOW_TOGGLE, userId
     }
 }
-
 export const buttonDisableToggle = (state, userId) => {
     return {type: BUTTON_DISABLE_TOGGLE, state, userId}
 }
-
 export const getUsers = () => {
     return (dispatch) => {
-        if (store.getState().usersFirstInfo.users.length === 0) {
+        if (store.getState().usersInfo.users.length === 0) {
             usersAPI.getUsers()
                 .then(data => {
                     dispatch(setUsers(data.items));
@@ -59,7 +67,6 @@ export const getUsers = () => {
         }
     }
 }
-
 export const userUnfollow = (id) => {
     return (dispatch) => {
         dispatch(buttonDisableToggle(true, id));
@@ -83,6 +90,24 @@ export const userFollow = (id) => {
                 dispatch(buttonDisableToggle(false, id));
             })
     }
+}
+export const setStatusAC = (status) => {
+    return {type: SET_STATUS, status}
+}
+export const getStatus = (userId) => (dispatch) => {
+    profileAPI.getStatus(userId)
+        .then(response => {
+            dispatch(setStatusAC(response.data))
+        })
+}
+export const updateStatus = (status) => (dispatch) => {
+    profileAPI.updateStatus(status)
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setStatusAC(status))
+            }
+        })
+
 }
 
 export default userReducer;

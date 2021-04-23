@@ -36,6 +36,9 @@ const AuthUser = (props) => {
                     <li>
                         <NavLink to="/social" className="subnav__link" >Сообщество</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/profile_user" className="subnav__link" >Мой профиль</NavLink>
+                    </li>
 
                     <li>
                         <NavLink to='/profile' className="subnav__link subnav__link--line">Редактировать профиль</NavLink>
