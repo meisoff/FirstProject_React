@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import SignUp from "./SignUp";
 import {connect} from "react-redux";
+import {compose} from "redux";
+import {redirectAuthUsers} from "../../hoc/withAuthRedirect";
 
 class SignUpContainer extends Component {
     render() {
@@ -16,4 +18,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {})(SignUpContainer);
+export default compose(connect(mapStateToProps, {}), redirectAuthUsers)(SignUpContainer)

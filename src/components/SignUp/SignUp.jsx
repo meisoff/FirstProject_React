@@ -32,7 +32,7 @@ const MyCheckbox = ({children, ...props}) => {
     );
 };
 
-const SignIn = () => {
+const SignIn = (props) => {
     return (
         <>
             <h1 className="page__title page__title--center">Регистрация</h1>
@@ -63,10 +63,7 @@ const SignIn = () => {
                         .required("*Необходимое поле"),
                 })}
                 onSubmit={(values, {setSubmitting}) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
+                    setSubmitting(false);
                 }}
             >
                 <Form className="form form--auth">

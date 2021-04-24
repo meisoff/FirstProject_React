@@ -32,7 +32,13 @@ const MyCheckbox = ({ children, ...props }) => {
     );
 };
 
-const SignIn = () => {
+
+
+const SignIn = (props) => {
+    let errorAPI = {
+        message: "Неправильный пароль или Email",
+    };
+
     return (
         <>
             <h1 className="page__title page__title--center">Вход</h1>
@@ -52,10 +58,15 @@ const SignIn = () => {
                         .required("*Необходимое поле"),
                 })}
                 onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
+                    props.loginUser(values.email, values.password, values.rememberMe)
+                        .then (response => {
+                            if (response.resultCode === 1) {
+                                errorAPI.state = true
+                            } else if (response.resultCode === 0) {
+                                errorAPI.state = false;
+                            }
+                        })
+                    setSubmitting(false);
                 }}
             >
                 <Form className="form form--auth">
@@ -77,9 +88,11 @@ const SignIn = () => {
                         Запомнить меня?
                     </MyCheckbox>
 
+                    {props.isErrorSignIn ? <div className="form__footer-error">{errorAPI.message}</div> : null}
+
                     <div className="form__footer form__footer--center">
                         <div className="form__group form__group--md">
-                            <button type="submit" className="btn btn--blue btn--rounded btn--small">Вход</button>
+                            <button disabled={props.isDisabled} type="submit" className="btn btn--blue btn--rounded btn--small">Вход</button>
                         </div>
                         <ul className="form__footer-list">
                             <li>

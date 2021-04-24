@@ -1,107 +1,114 @@
 .form {
 
-    &--auth {
-        max-width: 280px;
-        margin: 0 auto;
-    }
+  &--auth {
+    max-width: 280px;
+    margin: 0 auto;
+  }
 }
 
 .form__group {
-    margin-bottom: 1.5rem;
-    position: relative;
+  margin-bottom: 1.5rem;
+  position: relative;
 
-    &--md {
-        margin-bottom: 2.5rem;
-    }
+  &--md {
+    margin-bottom: 2.5rem;
+  }
 }
 
 .form__control {
-    display: block;
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0 0.75rem;
+
+  background: none;
+  border: none;
+  border-bottom: 1px solid #3f3f3f;
+  border-radius: 0;
+  box-shadow: none;
+
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: $white;
+
+  &::placeholder {
+    color: rgba($white, .2);
+  }
+
+  &:focus + .form__line {
     width: 100%;
-    padding: 0.5rem 0 0.75rem;
+  }
 
-    background: none;
-    border: none;
-    border-bottom: 1px solid #3f3f3f;
-    border-radius: 0;
-    box-shadow: none;
-
-    font-family: inherit;
-    font-size: 1.4rem;
-    color: $white;
-
-    &::placeholder {
-        color: rgba($white, .2);
-    }
-    
-    &:focus + .form__line {
-        width: 100%;
-    }
-
-    &--textarea {
-        height: 32px;
-        overflow: hidden;
-        resize: none;
-    }
+  &--textarea {
+    height: 32px;
+    overflow: hidden;
+    resize: none;
+  }
 }
 
 .form__accept-button {
-    & span {
-        margin-left: 1rem;
-    }
+  & span {
+    margin-left: 1rem;
+  }
 }
 
 .form__accept {
-    position: relative;
-    margin-bottom: 2rem;
+  position: relative;
+  margin-bottom: 2rem;
 }
 
 .form__line {
-    width: 0;
-    height: 1px;
+  width: 0;
+  height: 1px;
 
-    background-color: $blue;
+  background-color: $blue;
 
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
 
-    transition: width 0.2s linear;
+  transition: width 0.2s linear;
 }
 
 .form__error {
-    position: absolute;
+  position: absolute;
 
-    top: 0;
-    right: 0;
+  top: 0;
+  right: 0;
 
-    color: darken(red, 20%);
+  color: darken(red, 20%);
 }
 
 .form__footer {
 
-    &--center {
-        text-align: center;
-    }
+  &--center {
+    text-align: center;
+  }
+}
+
+.form__footer-error {
+  margin-bottom: 1.5rem;
+
+  text-align: center;
+  color: darken(red, 20%);
 }
 
 .form__acceptedTerms {
-    color: $blue;
+  color: $blue;
 }
 
 .form__footer-list {
-    display: flex;
-    justify-content: center;
-    
-    font-size: 1.2rem;
-    line-height: 1.2;
+  display: flex;
+  justify-content: center;
 
-    li {
-        margin: 0 .5rem;
-    }
+  font-size: 1.2rem;
+  line-height: 1.2;
 
-    a {
-        color: $white;
-    }
+  li {
+    margin: 0 .5rem;
+  }
+
+  a {
+    color: $white;
+  }
 }

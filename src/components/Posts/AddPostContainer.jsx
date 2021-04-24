@@ -6,7 +6,8 @@ import {updateTotalPostCount} from "../../redux/reducers/paginationListReducer";
 
 let mapStateToProps = (state) => {
     return {
-        newPostDescription: state.newPostDescription
+        newPostDescription: state.newPostDescription,
+        isAuth: state.auth.isAuth
     }
 }
 
