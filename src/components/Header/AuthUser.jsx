@@ -45,7 +45,7 @@ const AuthUser = (props) => {
                     </li>
 
                     <li>
-                        <NavLink to='/' className="subnav__link">Выйти</NavLink>
+                        <NavLink to='/' onClick={props.logoutUser} className="subnav__link">Выйти</NavLink>
                     </li>
                 </ul>
             </li>

@@ -23,7 +23,7 @@ const AddPost = (props) => {
                     <NavLink to="/create_article">
                         <div className="add-post-file"/>
                     </NavLink>
-                    <button onClick={addPost} className="add-post__send">
+                    <button disabled={!props.isAuth} onClick={addPost} className="add-post__send">
                         Отправить
                     </button>
                 </div>

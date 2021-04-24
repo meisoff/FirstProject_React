@@ -9,14 +9,6 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-    authentication() {
-        return axios.get(`https://social-network.samuraijs.com/api/1.1/auth/me`, {
-            withCredentials: true
-        })
-            .then (response => {
-                return response.data
-            })
-    },
     getUsers() {
         return instance.get("users?count=10")
             .then (response => {
@@ -50,5 +42,28 @@ export const profileAPI = {
 
     updateStatus(status) {
         return instance.put(`profile/status`, {status: status})
+    }
+}
+
+export const authAPI = {
+    me() {
+        return axios.get(`https://social-network.samuraijs.com/api/1.1/auth/me`, {
+            withCredentials: true
+        })
+            .then (response => {
+                return response.data
+            })
+    },
+
+    logout() {
+        return instance.post("auth/logout", {})
+    },
+
+    login(email, password, rememberMe) {
+        return instance.post("auth/login", {
+            email,
+            password,
+            rememberMe
+        })
     }
 }

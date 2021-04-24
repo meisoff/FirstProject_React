@@ -13,7 +13,7 @@ const Header = (props) => {
             <Burger />
         </div>
         <div className="header__right">
-            {props.isAuth ? <AuthUser login={props.login}/> : <NoneAuthUser />}
+            {props.isAuth ? <AuthUser logoutUser={props.logoutUser} login={props.login}/> : <NoneAuthUser />}
             <Search />
         </div>
 
