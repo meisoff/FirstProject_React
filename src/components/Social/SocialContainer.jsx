@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import Social from "./Social";
 import Following from "./Following";
 import Followers from "./Followers";
-import {getUsers, userFollow, userUnfollow} from "../../redux/reducers/userReducer";
+import {getFollowing, getUsers, userFollow, userUnfollow} from "../../redux/reducers/userReducer";
 import {authLoginLength} from "../Header/AuthUser";
 import baseUserAvatar from "../../images/user_photo.png";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -12,7 +12,8 @@ import {compose} from "redux";
 
 class SocialContainer extends Component {
     componentDidMount() {
-        this.props.getUsers();
+        this.props.getUsers(12);
+        this.props.getFollowing(4, 1, true);
     }
 
     separateFunc = (array) => {
@@ -68,6 +69,12 @@ class SocialContainer extends Component {
         }
     }
 
+    setColumnOfFollowers = (array) => {
+        if (this.props.following.length !== 0) {
+            return this.generateFollowItem(array)
+        }
+    }
+
     render() {
         return (
             <div className="social__body">
@@ -75,17 +82,17 @@ class SocialContainer extends Component {
 
                 <div className="social__follow">
                     <div className="social__follow-item  social__follow-item--left">
-                        <Following/>
+                        <Following columnOne={this.setColumnOfFollowers(this.props.following)}/>
                     </div>
 
                     <div className="social__follow-item  social__follow-item--right">
-                        <Followers/>
+                        <Followers columnTwo={this.setColumnOfUsers(this.props.users, 0)}/>
                     </div>
                 </div>
 
                 <div className="social__search">
-                    <Social columnOne={this.setColumnOfUsers(this.props.users, 0)}
-                            columnTwo={this.setColumnOfUsers(this.props.users, 1)}/>
+                    <Social columnThree={this.setColumnOfUsers(this.props.users, 1)}
+                            columnFour={this.setColumnOfUsers(this.props.users, 2)}/>
                 </div>
             </div>
         )
@@ -95,11 +102,12 @@ class SocialContainer extends Component {
 const mapStateToProps = (state) => {
     return {
         users: state.usersInfo.users,
+        following: state.usersInfo.following,
         isButtonDisabled: state.usersInfo.isButtonDisabled,
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {getUsers, userUnfollow, userFollow}),
+    connect(mapStateToProps, {getUsers, userUnfollow, userFollow, getFollowing}),
     withAuthRedirect
 )(SocialContainer)

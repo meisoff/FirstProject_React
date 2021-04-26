@@ -9,8 +9,15 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-    getUsers() {
-        return instance.get("users?count=10")
+    getUsers(count = 10) {
+        return instance.get(`users?count=${count}`)
+            .then (response => {
+                return response.data
+            })
+    },
+
+    getFollowing(count = 10, page = 1 , friend) {
+        return instance.get(`users?count=${count}&page=${page}&friend=${friend}`)
             .then (response => {
                 return response.data
             })

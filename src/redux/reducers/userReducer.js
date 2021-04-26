@@ -5,9 +5,11 @@ const FOLLOW_TOGGLE = "FOLLOW_TOGGLE";
 const SET_USERS = "SET_USERS";
 const BUTTON_DISABLE_TOGGLE = "BUTTON_DISABLE_TOGGLE";
 const SET_STATUS = "SET_STATUS";
+const SET_FOLLOWING = "SET_FOLLOWING";
 
 let initialState = {
     users: [],
+    following: [],
     isButtonDisabled: [],
     status: "",
     aboutMe: "",
@@ -21,14 +23,22 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW_TOGGLE:
             return {
-                ...state, users: state.users.map(u => {
+                ...state,
+                users: state.users.map(u => {
                     if (u.id === action.userId) {
                         return {...u, followed: !u.followed}
                     } else return u;
-                })
+                }),
+                following: state.following.map(u => {
+            if (u.id === action.userId) {
+                return {...u, followed: !u.followed}
+            } else return u;
+        })
             }
         case SET_USERS:
             return {...state, users: action.users}
+        case SET_FOLLOWING:
+            return {...state, following: action.following}
         case BUTTON_DISABLE_TOGGLE:
             return {
                 ...state, isButtonDisabled: action.isButtonDisabled
@@ -49,6 +59,11 @@ export const setUsers = (users) => {
         type: SET_USERS, users
     }
 }
+export const setFollowing = (following) => {
+    return {
+        type: SET_FOLLOWING, following
+    }
+}
 export const followToggle = (userId) => {
     return {
         type: FOLLOW_TOGGLE, userId
@@ -57,12 +72,23 @@ export const followToggle = (userId) => {
 export const buttonDisableToggle = (state, userId) => {
     return {type: BUTTON_DISABLE_TOGGLE, state, userId}
 }
-export const getUsers = () => {
+export const getUsers = (count) => {
     return (dispatch) => {
         if (store.getState().usersInfo.users.length === 0) {
-            usersAPI.getUsers()
+            usersAPI.getUsers(count)
                 .then(data => {
                     dispatch(setUsers(data.items));
+                })
+        }
+    }
+}
+
+export const getFollowing = (count, page, friend) => {
+    return (dispatch) => {
+        if (store.getState().usersInfo.following.length === 0) {
+            usersAPI.getFollowing(count, page, friend)
+                .then(data => {
+                    dispatch(setFollowing(data.items));
                 })
         }
     }

@@ -9,66 +9,7 @@ class Followers extends Component {
                 <h1 className="follow__title">Подписчики</h1>
 
                 <ul className="follow__list">
-                    <li className="follow__item">
-                        <div className="follow__item-img" />
-
-                        <div className="follow__item-info">
-                            <div className="follow__info-name">Александр</div>
-                            <div className="follow__info-login">Meisoff</div>
-                        </div>
-
-                        <button className="btn btn--rounded btn--small btn--blue">Подписка</button>
-                    </li>
-                    <li className="follow__item">
-                        <div className="follow__item-img" />
-
-                        <div className="follow__item-info">
-                            <div className="follow__info-name">Александр</div>
-                            <div className="follow__info-login">Meisoff</div>
-                        </div>
-
-                        <button className="btn btn--rounded btn--small btn--blue">Подписка</button>
-                    </li>
-                    <li className="follow__item">
-                        <div className="follow__item-img" />
-
-                        <div className="follow__item-info">
-                            <div className="follow__info-name">Александр</div>
-                            <div className="follow__info-login">Meisoff</div>
-                        </div>
-
-                        <button className="btn btn--rounded btn--small btn--blue">Подписка</button>
-                    </li>
-                    <li className="follow__item">
-                        <div className="follow__item-img" />
-
-                        <div className="follow__item-info">
-                            <div className="follow__info-name">Александр</div>
-                            <div className="follow__info-login">Meisoff</div>
-                        </div>
-
-                        <button className="btn btn--rounded btn--small btn--blue">Подписка</button>
-                    </li>
-                    <li className="follow__item">
-                        <div className="follow__item-img" />
-
-                        <div className="follow__item-info">
-                            <div className="follow__info-name">Александр</div>
-                            <div className="follow__info-login">Meisoff</div>
-                        </div>
-
-                        <button className="btn btn--rounded btn--small btn--blue">Подписка</button>
-                    </li>
-                    <li className="follow__item">
-                        <div className="follow__item-img" />
-
-                        <div className="follow__item-info">
-                            <div className="follow__info-name">Александр</div>
-                            <div className="follow__info-login">Meisoff</div>
-                        </div>
-
-                        <button className="btn btn--rounded btn--small btn--blue">Подписка</button>
-                    </li>
+                    {this.props.columnTwo}
                 </ul>
 
                 <NavLink className="follow__link" to="/">Перейти</NavLink>

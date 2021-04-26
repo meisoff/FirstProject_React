@@ -11,11 +11,11 @@ class Social extends Component {
 
                     <div className="follow__search-list">
                         <ul className="follow__list">
-                            {this.props.columnOne}
+                            {this.props.columnThree}
                         </ul>
 
                         <ul className="follow__list">
-                            {this.props.columnTwo}
+                            {this.props.columnFour}
                         </ul>
                     </div>
 
