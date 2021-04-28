@@ -30,10 +30,10 @@ const userReducer = (state = initialState, action) => {
                     } else return u;
                 }),
                 following: state.following.map(u => {
-            if (u.id === action.userId) {
-                return {...u, followed: !u.followed}
-            } else return u;
-        })
+                    if (u.id === action.userId) {
+                        return {...u, followed: !u.followed}
+                    } else return u;
+                })
             }
         case SET_USERS:
             return {...state, users: action.users}
@@ -91,8 +91,15 @@ export const getFollowing = (count, page, friend) => {
                     dispatch(setFollowing(data.items));
                 })
         }
+        if (store.getState().usersInfo.following.length === 4) {
+            usersAPI.getFollowing(count, page, friend)
+                .then(data => {
+                    dispatch(setFollowing(data.items));
+                })
+        }
     }
 }
+
 export const userUnfollow = (id) => {
     return (dispatch) => {
         dispatch(buttonDisableToggle(true, id));

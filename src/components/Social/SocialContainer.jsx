@@ -71,7 +71,11 @@ class SocialContainer extends Component {
 
     setColumnOfFollowers = (array) => {
         if (this.props.following.length !== 0) {
-            return this.generateFollowItem(array)
+            let result = [];
+            for (let i = 0; i < 4; i++) {
+                result.push(array[i])
+            }
+            return this.generateFollowItem(result)
         }
     }
 

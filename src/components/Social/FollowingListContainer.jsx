@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {getFollowing, getUsers, userFollow, userUnfollow} from "../../redux/reducers/userReducer";
@@ -8,6 +8,10 @@ import baseUserAvatar from "../../images/user_photo.png";
 import {authLoginLength} from "../Header/AuthUser";
 
 const FollowingListContainer = (props) => {
+
+    useEffect(() => {
+        props.getFollowing(100, 1, true);
+    }, [props])
 
     let separateFunc = (array) => {
         let result = [];
@@ -73,7 +77,6 @@ const FollowingListContainer = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersInfo.users,
         following: state.usersInfo.following,
         isButtonDisabled: state.usersInfo.isButtonDisabled,
     }

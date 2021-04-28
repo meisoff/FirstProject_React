@@ -17,6 +17,9 @@
 .social__follow {
     display: flex;
     justify-content: center;
+    @include breakpoint($mobile-bp) {
+        flex-direction: column;
+    }
 }
 
 .social__follow-item {
@@ -25,16 +28,30 @@
     box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.35);
     border-radius: 5px;
 
+    @include breakpoint($mobile-bp) {
+        min-width: 250px;
+        width: 100%;
+    }
+
     &--right {
         margin-left: 1rem;
+
+        @include breakpoint($mobile-bp) {
+            margin-left: 0rem;
+        }
     }
 
     &--left {
         margin-right: 1rem;
+        @include breakpoint($mobile-bp) {
+            margin-right: 0rem;
+            margin-bottom: 5rem;
+        }
     }
 }
 .social__search {
     margin-top: 5rem;
+    min-width: 250px;
 }
 
 .social__bg {
@@ -43,4 +60,5 @@
     box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.35);
     border-radius: 5px;
     padding-bottom: 2rem;
+
 }
