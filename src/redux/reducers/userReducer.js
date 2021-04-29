@@ -1,5 +1,6 @@
 import {profileAPI, usersAPI} from "../../api/api";
 import store from "../redux-store";
+import {isFetchingUpdate} from "./isFetchingReducer";
 
 const USERS_FOLLOW_TOGGLE = "USERS_FOLLOW_TOGGLE";
 const USERS_SET_USERS = "USERS_SET_USERS";
@@ -89,10 +90,12 @@ export const setUsersPhotos = (photos, userId) => {
 export const getUsers = (count) => {
     return (dispatch) => {
         if (store.getState().usersInfo.users.length === 0) {
+            dispatch(isFetchingUpdate(true))
             usersAPI.getUsers(count)
                 .then(data => {
                     dispatch(setUsers(data.items));
                 })
+            dispatch(isFetchingUpdate(false))
         }
     }
 }
@@ -106,13 +109,16 @@ export const getUserPhoto = (userId) => async (dispatch) => {
 
 export const getFollowing = (count, page, friend) => async (dispatch) => {
     if (store.getState().usersInfo.following.length === 0) {
+        dispatch(isFetchingUpdate(true))
         let data = await usersAPI.getFollowing(count, page, friend)
         dispatch(setFollowing(data.items));
     }
     if (store.getState().usersInfo.following.length === 4) {
+        dispatch(isFetchingUpdate(true))
         let data = await usersAPI.getFollowing(count, page, friend)
         dispatch(setFollowing(data.items));
     }
+    dispatch(isFetchingUpdate(false))
 }
 
 export const userUnfollow = (id) => async (dispatch) => {

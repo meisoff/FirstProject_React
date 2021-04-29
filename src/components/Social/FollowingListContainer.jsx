@@ -60,17 +60,17 @@ const FollowingListContainer = (props) => {
         )
     }
 
-    let setColumnOfFollowers = (array) => {
+    let setColumnOfFollowers = (array, element) => {
         if (props.following.length !== 0) {
-            separateFunc(array)
-            return generateFollowItem(array)
+            let result = separateFunc(array)
+            return generateFollowItem(result[element])
         }
     }
 
     return (
         <div className="social__search">
-            <FollowingList columnOne={setColumnOfFollowers(props.following, 1)}
-                    columnTwo={setColumnOfFollowers(props.following, 2)}/>
+            <FollowingList columnFirst={setColumnOfFollowers(props.following, 0)}
+                           columnSecond={setColumnOfFollowers(props.following, 1)}/>
         </div>
     )
 }

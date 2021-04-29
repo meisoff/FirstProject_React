@@ -10,11 +10,11 @@ const FollowingList = (props) => {
 
                 <div className="follow__search-list">
                     <ul className="follow__list">
-                        {props.columnOne}
+                        {props.columnFirst}
                     </ul>
 
                     <ul className="follow__list">
-                        {props.columnTwo}
+                        {props.columnSecond}
                     </ul>
                 </div>
 

@@ -1,0 +1,13 @@
+.preloader__wrapper {
+  background-color: $bg-elements;
+  width: 100%;
+  height: calc(40vh + 20vw);
+  overflow: hidden;
+}
+
+.preloader__item {
+  display: block;
+  position: relative;
+  top: calc( 50% - 40px );
+  left: calc( 50% - 40px ); /*2 argument - size of preloader*/
+}

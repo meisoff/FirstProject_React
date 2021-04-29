@@ -8,6 +8,7 @@ import {authLoginLength} from "../Header/AuthUser";
 import baseUserAvatar from "../../images/user_photo.png";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import PreloaderChild from "../common/Preloader/PreloaderChild";
 
 
 class SocialContainer extends Component {
@@ -80,6 +81,9 @@ class SocialContainer extends Component {
     }
 
     render() {
+        if (this.props.isFetching) {
+            return <PreloaderChild/>
+        }
         return (
             <div className="social__body">
                 <h1 className="page__title">Сообщество</h1>
@@ -108,6 +112,7 @@ const mapStateToProps = (state) => {
         users: state.usersInfo.users,
         following: state.usersInfo.following,
         isButtonDisabled: state.usersInfo.isButtonDisabled,
+        isFetching: state.isFetching.isFetching
     }
 }
 

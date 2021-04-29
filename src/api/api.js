@@ -39,6 +39,10 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
+    putProfileInfo(data) {
+        return instance.put(`profile/`, data)
+    },
+
     getProfile(userId) {
         return instance.get(`profile/${userId}`)
     },
@@ -49,6 +53,16 @@ export const profileAPI = {
 
     updateStatus(status) {
         return instance.put(`profile/status`, {status: status})
+    },
+
+    setPhotos(photoFile) {
+        const formData = new FormData();
+        formData.append("image", photoFile)
+        return instance.put(`profile/photo`, formData, {
+            headers: {
+                "Content-type": "multipart/form-data"
+            }
+        })
     }
 }
 

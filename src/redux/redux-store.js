@@ -7,6 +7,7 @@ import createArticleReducer from "./reducers/createArticleReducer";
 import authUserReducer from "./reducers/authUserReducer";
 import userReducer from "./reducers/userReducer";
 import thunk from "redux-thunk";
+import isFetchingReducer from "./reducers/isFetchingReducer";
 
 
 let reducers = combineReducers({
@@ -17,6 +18,7 @@ let reducers = combineReducers({
     createArticle: createArticleReducer,
     auth: authUserReducer,
     usersInfo: userReducer,
+    isFetching: isFetchingReducer,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
