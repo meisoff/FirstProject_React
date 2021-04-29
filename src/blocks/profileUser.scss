@@ -19,6 +19,7 @@
 
   & img {
     width: 15rem;
+    border-radius: 50%;
   }
 
   &-button {
@@ -120,6 +121,13 @@
   }
   &-flex2 {
     flex: 2;
+    color: white;
+    text-decoration: none;
+
+    :hover {
+      text-decoration: underline;
+      color: white;
+    }
   }
 
 }

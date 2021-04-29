@@ -1,11 +1,12 @@
 import {profileAPI, usersAPI} from "../../api/api";
 import store from "../redux-store";
 
-const FOLLOW_TOGGLE = "FOLLOW_TOGGLE";
-const SET_USERS = "SET_USERS";
-const BUTTON_DISABLE_TOGGLE = "BUTTON_DISABLE_TOGGLE";
-const SET_STATUS = "SET_STATUS";
-const SET_FOLLOWING = "SET_FOLLOWING";
+const USERS_FOLLOW_TOGGLE = "USERS_FOLLOW_TOGGLE";
+const USERS_SET_USERS = "USERS_SET_USERS";
+const USERS_BUTTON_DISABLE_TOGGLE = "USERS_BUTTON_DISABLE_TOGGLE";
+const USERS_SET_STATUS = "USERS_SET_STATUS";
+const USERS_SET_FOLLOWING = "USERS_SET_FOLLOWING";
+const USERS_SET_PHOTOS = "USERS_SET_PHOTOS";
 
 let initialState = {
     users: [],
@@ -21,7 +22,7 @@ let initialState = {
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FOLLOW_TOGGLE:
+        case USERS_FOLLOW_TOGGLE:
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -35,19 +36,23 @@ const userReducer = (state = initialState, action) => {
                     } else return u;
                 })
             }
-        case SET_USERS:
+        case USERS_SET_USERS:
             return {...state, users: action.users}
-        case SET_FOLLOWING:
+        case USERS_SET_FOLLOWING:
             return {...state, following: action.following}
-        case BUTTON_DISABLE_TOGGLE:
+        case USERS_BUTTON_DISABLE_TOGGLE:
             return {
                 ...state, isButtonDisabled: action.isButtonDisabled
                     ? [...state.isButtonDisabled, action.userId]
                     : [...state.isButtonDisabled.filter(id => id !== action.userId)]
             }
-        case SET_STATUS:
+        case USERS_SET_STATUS:
             return {
                 ...state, status: action.status,
+            }
+        case USERS_SET_PHOTOS:
+            return {
+                ...state,
             }
 
         default:
@@ -56,22 +61,31 @@ const userReducer = (state = initialState, action) => {
 }
 export const setUsers = (users) => {
     return {
-        type: SET_USERS, users
+        type: USERS_SET_USERS, users
     }
 }
 export const setFollowing = (following) => {
     return {
-        type: SET_FOLLOWING, following
+        type: USERS_SET_FOLLOWING, following
     }
 }
 export const followToggle = (userId) => {
     return {
-        type: FOLLOW_TOGGLE, userId
+        type: USERS_FOLLOW_TOGGLE, userId
     }
 }
 export const buttonDisableToggle = (state, userId) => {
-    return {type: BUTTON_DISABLE_TOGGLE, state, userId}
+    return {type: USERS_BUTTON_DISABLE_TOGGLE, state, userId}
 }
+
+export const setStatusAC = (status) => {
+    return {type: USERS_SET_STATUS, status}
+}
+export const setUsersPhotos = (photos, userId) => {
+    return {type: USERS_SET_PHOTOS, photos, userId}
+}
+
+
 export const getUsers = (count) => {
     return (dispatch) => {
         if (store.getState().usersInfo.users.length === 0) {
@@ -83,63 +97,54 @@ export const getUsers = (count) => {
     }
 }
 
-export const getFollowing = (count, page, friend) => {
-    return (dispatch) => {
-        if (store.getState().usersInfo.following.length === 0) {
-            usersAPI.getFollowing(count, page, friend)
-                .then(data => {
-                    dispatch(setFollowing(data.items));
-                })
-        }
-        if (store.getState().usersInfo.following.length === 4) {
-            usersAPI.getFollowing(count, page, friend)
-                .then(data => {
-                    dispatch(setFollowing(data.items));
-                })
-        }
+export const getUserPhoto = (userId) => async (dispatch) => {
+    let response = await profileAPI.getProfile(userId);
+    if (response.data.resultCode === 0) {
+        dispatch(setUsersPhotos(response.data.data.photos, userId))
     }
 }
 
-export const userUnfollow = (id) => {
-    return (dispatch) => {
-        dispatch(buttonDisableToggle(true, id));
-        usersAPI.deleteFollow(id)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(followToggle(id));
-                }
-                dispatch(buttonDisableToggle(false, id));
-            })
+export const getFollowing = (count, page, friend) => async (dispatch) => {
+    if (store.getState().usersInfo.following.length === 0) {
+        let data = await usersAPI.getFollowing(count, page, friend)
+        dispatch(setFollowing(data.items));
+    }
+    if (store.getState().usersInfo.following.length === 4) {
+        let data = await usersAPI.getFollowing(count, page, friend)
+        dispatch(setFollowing(data.items));
     }
 }
-export const userFollow = (id) => {
-    return (dispatch) => {
-        dispatch(buttonDisableToggle(true, id));
-        usersAPI.postFollow(id)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(followToggle(id));
-                }
-                dispatch(buttonDisableToggle(false, id));
-            })
+
+export const userUnfollow = (id) => async (dispatch) => {
+    dispatch(buttonDisableToggle(true, id));
+    let data = await usersAPI.deleteFollow(id)
+
+    if (data.resultCode === 0) {
+        dispatch(followToggle(id));
     }
+    dispatch(buttonDisableToggle(false, id));
 }
-export const setStatusAC = (status) => {
-    return {type: SET_STATUS, status}
+export const userFollow = (id) => async (dispatch) => {
+    dispatch(buttonDisableToggle(true, id));
+    let data = await usersAPI.postFollow(id)
+
+    if (data.resultCode === 0) {
+        dispatch(followToggle(id));
+    }
+    dispatch(buttonDisableToggle(false, id));
 }
-export const getStatus = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId)
-        .then(response => {
-            dispatch(setStatusAC(response.data))
-        })
+
+export const getStatus = (userId) => async (dispatch) => {
+    let response = await profileAPI.getStatus(userId)
+
+    dispatch(setStatusAC(response.data))
 }
-export const updateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setStatusAC(status))
-            }
-        })
+export const updateStatus = (status) => async (dispatch) => {
+    let response = await profileAPI.updateStatus(status)
+
+    if (response.data.resultCode === 0) {
+        dispatch(setStatusAC(status))
+    }
 
 }
 

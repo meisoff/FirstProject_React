@@ -36,5 +36,19 @@
     &--center {
     text-align: center;
     }
+}
 
+
+.page__title--h2 {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: $white;
+
+    &--center {
+        text-align: center;
+    }
+}
+
+.mt-5 {
+    margin-top: 5rem;
 }

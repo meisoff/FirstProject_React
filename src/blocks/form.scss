@@ -28,7 +28,7 @@
 
   font-family: inherit;
   font-size: 1.4rem;
-  color: $white;
+  color: rgba($white, .5);
 
   &::placeholder {
     color: rgba($white, .2);

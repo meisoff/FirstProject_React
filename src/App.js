@@ -13,6 +13,7 @@ import SignInContainer from "./components/SignIn/SignInContainer";
 import SocialContainer from "./components/Social/SocialContainer";
 import ProfileUserContainer from "./components/Profile/ProfileUserContainer";
 import FollowingListContainer from "./components/Social/FollowingListContainer";
+import ProfileInfo from "./components/Profile/ProfileInfo";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
                         <Route path='/social' render={ () => <SocialContainer />} />
                         <Route path='/profile_user' render={ () => <ProfileUserContainer />} />
                         <Route path='/following' render={ () => <FollowingListContainer />} />
+                        <Route path='/test' render={ () => <ProfileInfo />} />
                     </div>
                 </main>
             </div>

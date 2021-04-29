@@ -36,7 +36,10 @@ class ProfileUser extends React.Component {
             <div className="profileUser__bg">
                 <div className="profileUser__ownInfo">
                     <div className="profileUser__avatar">
-                        <img src={baseAvatar} alt="Basic avatar"/>
+                        {this.props.userInfo.photos.large ?
+                            <img src={this.props.userInfo.photos.large} alt="Basic avatar"/>
+                            : <img src={baseAvatar} alt="Basic avatar"/>
+                        }
                         <div className="profileUser__avatar-button">
                             <button className="follow__button">Написать</button>
                         </div>
@@ -57,18 +60,63 @@ class ProfileUser extends React.Component {
                             <div className="profileUser__item">
                                 <h3 className="profileUser__item-title">Контакты</h3>
                                 <div className="profileUser__item-list">
-                                    <div className="profileUser__list">
-                                        <span className="profileUser__list-flex1">telegram:</span>
-                                        <span className="profileUser__list-flex2">@meisoff</span>
-                                    </div>
-                                    <div className="profileUser__list">
-                                        <span className="profileUser__list-flex1">instagram:</span>
-                                        <span className="profileUser__list-flex2">@meisoff</span>
-                                    </div>
-                                    <div className="profileUser__list">
-                                        <span className="profileUser__list-flex1">email:</span>
-                                        <span className="profileUser__list-flex2">meisoff__cool@meisoff.ru</span>
-                                    </div>
+
+                                    {!!this.props.userInfo.contacts.facebook ?
+                                        <div className="profileUser__list">
+                                            <span className="profileUser__list-flex1">facebook:</span>
+                                            <a href={this.props.userInfo.contacts.facebook} rel="noreferrer" target="_blank" className="profileUser__list-flex2">Ссылка</a>
+                                        </div>
+                                        : null}
+
+                                    {this.props.userInfo.contacts.website ?
+                                        <div className="profileUser__list">
+                                            <span className="profileUser__list-flex1">website:</span>
+                                            <a href={this.props.userInfo.contacts.website} rel="noreferrer" target="_blank" className="profileUser__list-flex2">Ссылка</a>
+                                        </div>
+                                        : null}
+
+
+                                    {this.props.userInfo.contacts.vk ?
+                                        <div className="profileUser__list">
+                                            <span className="profileUser__list-flex1">vk:</span>
+                                            <a href={this.props.userInfo.contacts.vk} rel="noreferrer" target="_blank" className="profileUser__list-flex2">Ссылка</a>
+                                        </div>
+                                        : null}
+
+                                    {this.props.userInfo.contacts.twitter ?
+                                        <div className="profileUser__list">
+                                            <span className="profileUser__list-flex1">twitter:</span>
+                                            <a href={this.props.userInfo.contacts.twitter} rel="noreferrer" target="_blank" className="profileUser__list-flex2">Ссылка</a>
+                                        </div>
+                                        : null}
+
+                                    {this.props.userInfo.contacts.instagram ?
+                                        <div className="profileUser__list">
+                                            <span className="profileUser__list-flex1">instagram:</span>
+                                            <a href={this.props.userInfo.contacts.instagram} rel="noreferrer" target="_blank" className="profileUser__list-flex2">Ссылка</a>
+                                        </div>
+                                        : null}
+
+                                    {this.props.userInfo.contacts.youtube ?
+                                        <div className="profileUser__list">
+                                            <span className="profileUser__list-flex1">youtube:</span>
+                                            <a href={this.props.userInfo.contacts.youtube} rel="noreferrer" target="_blank" className="profileUser__list-flex2">Ссылка</a>
+                                        </div>
+                                        : null}
+
+                                    {this.props.userInfo.contacts.github ?
+                                        <div className="profileUser__list">
+                                            <span className="profileUser__list-flex1">github:</span>
+                                            <a href={this.props.userInfo.contacts.github} rel="noreferrer" target="_blank" className="profileUser__list-flex2">Ссылка</a>
+                                        </div>
+                                        : null}
+
+                                    {this.props.userInfo.contacts.mainLink ?
+                                        <div className="profileUser__list">
+                                            <span className="profileUser__list-flex1">mainLink:</span>
+                                            <a href={this.props.userInfo.contacts.mainLink} rel="noreferrer" target="_blank" className="profileUser__list-flex2">Ссылка</a>
+                                        </div>
+                                        : null}
                                 </div>
                             </div>
 
@@ -77,12 +125,13 @@ class ProfileUser extends React.Component {
                                 <div className="profileUser__item-list">
                                     <div className="profileUser__list">
                                         <span className="profileUser__list-flex1">Место работы:</span>
-                                        <span className="profileUser__list-flex2">В поиске</span>
+                                        <span
+                                            className="profileUser__list-flex2">{this.props.userInfo.lookingForAJob ? "Работаю" : "В поиске"}</span>
                                     </div>
                                     <div className="profileUser__list">
                                         <span className="profileUser__list-flex1">Описание:</span>
                                         <span
-                                            className="profileUser__list-flex2">Ищу работу, знаю это это и это</span>
+                                            className="profileUser__list-flex2">{this.props.userInfo.lookingForAJobDescription ? this.props.userInfo.lookingForAJobDescription : "Без описания"}</span>
                                     </div>
                                 </div>
                             </div>
@@ -92,11 +141,8 @@ class ProfileUser extends React.Component {
                 <div className="profileUser__aboutMe">
                     <div className="profileUser__shortDescription">
                         <h3 className="profileUser__item-title">Обо мне</h3>
-                        <div className="profileUser__wrapper-description">Front-end разработчик. Практик верстки
-                            сайтов. Созданием
-                            сайтов занимаюсь с 2012 года. Работал в нескольких ИТ компаниях и наработал более 10 000
-                            часов в
-                            создании сайтов различной сложности.
+                        <div className="profileUser__wrapper-description">
+                            {this.props.userInfo.aboutMe ? this.props.userInfo.aboutMe : "Нет информации"}
                         </div>
                     </div>
                 </div>

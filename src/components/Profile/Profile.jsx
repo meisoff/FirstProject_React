@@ -1,51 +1,37 @@
 import React from "react";
+import {connect} from "react-redux";
+import {getAuthUserInfo, putUserPhoto, updateUserFullInfo} from "../../redux/reducers/authUserReducer";
+import ProfileInfo from "./ProfileInfo";
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <div>
             <h1 className="page__title">Профиль</h1>
 
-            <form action="/" method="POST" className="form">
+            <div className="form">
                 <div className="cabinet">
-                    <div className="cabinet__form">
-                        <div className="form__group form__group--md">
-                            <input type="text" className="form__control" placeholder="Ваше имя"
-                                   value="Александр Калыргин"/>
-                            <span className="form__line" />
-                        </div>
-
-                        <div className="form__group form__group--md">
-                            <input type="email" className="form__control" placeholder="Ваш e-mail"
-                                   value="kalyrginwot@mail.ru"/>
-                            <span className="form__line" />
-                        </div>
-
-                        <div className="form__group form__group--md">
-                            <input type="password" className="form__control" placeholder="Новый пароль"/>
-                            <span className="form__line" />
-                        </div>
-
-                        <div className="form__group form__group--md">
-                            <input type="password" className="form__control" placeholder="Повторите пароль"/>
-                            <span className="form__line" />
-                        </div>
-                    </div>
+                    <ProfileInfo isDisabled={props.isDisabled} userInfo={props.userInfos} updateUserFullInfo={props.updateUserFullInfo} />
                     <div className="cabinet__avatar">
-                        <img src="http://placehold.it/150" alt="avatar"/>
+                        {!!props.userInfos.photos.large ? <img src={props.userInfos.photos.large} alt="avatar"/> : <img src="http://placehold.it/150" alt="avatar"/>}
 
                         <label className="cabinet__file">
-                            <input type="file"/>
+                            <input type="file" onChange={props.putUserPhoto}/>
                             выбрать аватар
                         </label>
                     </div>
                 </div>
-
-
-                <button className="btn btn--blue btn--rounded btn--small" type="submit">Сохранить</button>
-            </form>
+            </div>
 
         </div>
     )
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+    return {
+        myId: state.auth.userId,
+        userInfos: state.auth.userInfo,
+        isDisabled: state.auth.isButtonDisabled
+    }
+}
+
+export default connect(mapStateToProps, {putUserPhoto, getAuthUserInfo, updateUserFullInfo})(Profile)

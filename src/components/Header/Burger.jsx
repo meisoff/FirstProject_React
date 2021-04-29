@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 const Burger = () => {
-    const [toggleMenu, setToggle] = useState(true);
+    const [toggleMenu, setToggle] = useState(false);
 
     if (toggleMenu) {
         document.body.classList.add('show-sidebar');

@@ -46,6 +46,11 @@
         box-shadow: 0 7px 17px -10px rgba($primary, .3);
     }
 
+    &:disabled {
+        background-color: $primary;
+        box-shadow: 0 7px 17px -10px rgba($primary, .3);
+    }
+
     &--rounded {
         border-radius: 0.41em;
     }

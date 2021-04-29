@@ -16,7 +16,7 @@ const AuthUser = (props) => {
         <ul className="nav__list">
             <li className="nav__item">
                 <div className="nav__link" style={{display: "flex"}}>
-                    <div className="nav__link-avatar" style={{backgroundImage: `url(https://sun9-2.userapi.com/impg/I9s8f_Zsnit4SNdm1QUS2sgp2bw4e90ZRPZOVw/O4gTLuvfqJ0.jpg?size=1199x1200&quality=96&sign=023ae353dccafd3279a7f0768b795144&type=album)`}}/>
+                    <div className="nav__link-avatar" style={{backgroundImage: `url(${props.avatar})`}}/>
                     <div>Профиль</div>
                 </div>
 
