@@ -2,7 +2,7 @@ import './App.scss';
 import HeaderContainer from "./components/Header/HeaderContainer"
 import Sidebar from "./components/Sidebar/Sidebar";
 import HomePage from "./components/Homepage/HomePage";
-import {BrowserRouter, Route} from "react-router-dom";
+import { HashRouter, Route} from "react-router-dom";
 import Profile from "./components/Profile/Profile";
 import WorksContainer from "./components/Works/WorksContainer";
 import CreateArticleContainer from "./components/Article/CreateArticleContainer";
@@ -18,7 +18,7 @@ import ProfileInfo from "./components/Profile/ProfileInfo";
 function App() {
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className="page" id="page">
                 <HeaderContainer/>
                 <Sidebar/>
@@ -40,7 +40,7 @@ function App() {
                     </div>
                 </main>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 

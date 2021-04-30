@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 class Pagination extends React.Component {
 
@@ -14,8 +15,8 @@ class Pagination extends React.Component {
     }
     paginationElement = (element, active) => {
         return (
-            <a className={"pagination__link " + active} onClick={() => this.props.updatePaginationList(element)}
-               href="/#">{element}</a>
+            <NavLink to="/" className={"pagination__link " + active}
+                     onClick={() => this.props.updatePaginationList(element)}>{element}</NavLink>
         )
     }
 
@@ -31,12 +32,12 @@ class Pagination extends React.Component {
 
         let pagination = pages.map(element => {
 
-            let key = (ownElement, secondaryElement ) => {
+            let key = (ownElement, secondaryElement) => {
                 return `element${ownElement}` + secondaryElement.toString();
             }
 
             if (pages.length > 3) {
-                if (element === this.props.currentPage && element !== 1 && element !== pages.length ) {
+                if (element === this.props.currentPage && element !== 1 && element !== pages.length) {
                     return (
                         <ul className="pagination--wrapper" key={element}>
                             <li className="pagination__item" key={key(element, element - 1)}>
@@ -52,8 +53,7 @@ class Pagination extends React.Component {
                             </li>
                         </ul>
                     )
-                }
-                else {
+                } else {
                     if (element === this.props.currentPage && element === pages.length) {
                         return (
                             <ul className="pagination--wrapper" key={element}>
@@ -70,8 +70,7 @@ class Pagination extends React.Component {
                                 </li>
                             </ul>
                         )
-                    }
-                    else if (element === 1 && element === this.props.currentPage) {
+                    } else if (element === 1 && element === this.props.currentPage) {
                         return (
                             <ul className="pagination--wrapper" key={element}>
                                 <li className="pagination__item" key={key(element, element)}>
@@ -87,11 +86,9 @@ class Pagination extends React.Component {
                                 </li>
                             </ul>
                         )
-                    }
-                    else return null
+                    } else return null
                 }
-            }
-            else {
+            } else {
                 if (element === this.props.currentPage) {
                     return (
                         <ul className="pagination--wrapper" key={element}>
