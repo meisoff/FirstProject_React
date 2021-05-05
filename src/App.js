@@ -18,7 +18,7 @@ import ProfileInfo from "./components/Profile/ProfileInfo";
 function App() {
 
     return (
-        <HashRouter>
+        <HashRouter >
             <div className="page" id="page">
                 <HeaderContainer/>
                 <Sidebar/>
